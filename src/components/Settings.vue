@@ -18,7 +18,7 @@
       :currentVariant="currentVariant"
     />
     <UidsButton
-      url="/brand-icons.zip"
+      url="https://github.com/uiowa/brand-icons/archive/refs/heads/main.zip"
       text="Download all"
       download="true"
       icon="download"
