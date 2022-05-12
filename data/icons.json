@@ -551,7 +551,7 @@
             ],
             "dateAdded": ""
         }, {
-            "name": "Boardroom",
+            "name": "boardroom",
             "keywords": [
                 "room",
                 "office",
@@ -1492,7 +1492,7 @@
             ],
             "dateAdded": ""
         }, {
-            "name": "Digital-Textbook",
+            "name": "digital-textbook",
             "keywords": [
                 "books", "book", "research"
             ],
@@ -4244,7 +4244,7 @@
             ],
             "dateAdded": ""
         }, {
-            "name": "Password",
+            "name": "password",
             "keywords": [
                 "technology", "its", "security", "privacy"
             ],
@@ -6420,7 +6420,7 @@
             ],
             "dateAdded": ""
         }, {
-            "name": "User-profile",
+            "name": "user-profile",
             "keywords": [
                 "settings", "gear", "person"
             ],
