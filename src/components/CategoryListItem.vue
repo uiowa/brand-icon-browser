@@ -82,6 +82,7 @@ function scrollToTop() {
     grid-column: span 4;
     align-self: center;
     line-height: 1;
+    padding-left: 10px;
   }
 
   &__count {
