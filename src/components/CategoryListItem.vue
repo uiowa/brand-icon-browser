@@ -71,16 +71,15 @@ function scrollToTop() {
 
   &__icon {
     display: block;
-    width: 100%;
     align-self: center;
     padding: 5px 0;
     height: 40px;
-    grid-column: span 2;
+    grid-column: span 1;
   }
 
   &__title {
     font-size: clamp(0.8rem, 1vw, 0.9rem);
-    grid-column: span 3;
+    grid-column: span 4;
     align-self: center;
     line-height: 1;
   }
