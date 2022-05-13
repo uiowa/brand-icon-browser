@@ -155,7 +155,7 @@ function closeModal(currentCategory, currentSearchTerm) {
 
 <style lang="scss">
 .modal {
-  width: 50vw;
+  width: 75vw;
   padding: 30px;
   padding-top: 20px;
   margin: 100px auto;
@@ -163,7 +163,9 @@ function closeModal(currentCategory, currentSearchTerm) {
   border-radius: 4px;
   border: 1px solid #ccc;
   align-self: center;
-
+  @media only screen and (min-width: 1280px) {
+    width: 50vw;
+  }
   &__backdrop {
     top: 0;
     position: fixed;
