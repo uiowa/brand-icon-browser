@@ -1,11 +1,11 @@
 <template>
   <div class="category-list">
     <ul class="category-list__list">
-      <li class="category-list__item">
+      <li class="category-list-item">
         <router-link
           :to="{ name: 'Home' }"
-          class="category-list-item"
-          active-class="category-list-item--active"
+          class="category-list-item__link"
+          active-class="category-list-item__link--active"
         >
           <Icon
             icon="open-book"

@@ -6,8 +6,8 @@
       params: { category: category.slug },
       query: { search: undefined },
     }"
-    class="category-list-item"
-    active-class="category-list-item--active"
+    class="category-list-item__link"
+    active-class="category-list-item__link--active"
   >
     <Icon :icon="icon" variant="two-color" class="category-list-item__icon" />
     <div class="category-list-item__title">{{ label }}</div>
@@ -54,17 +54,19 @@ function scrollToTop() {
 
 <style lang="scss">
 .category-list-item {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border-radius: 3px;
-  padding: 0 10px;
-  text-decoration: none;
-  border: 2px solid rgba(238, 238, 238, 0);
+  &__link {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-radius: 3px;
+    padding: 0 10px;
+    text-decoration: none;
+    border: 2px solid rgba(238, 238, 238, 0);
 
-  &:hover,
-  &--active {
-    background: #fff;
-    border-color: #eee;
+    &:hover,
+    &--active {
+      background: #fff;
+      border-color: #eee;
+    }
   }
 
   &__icon {
@@ -77,14 +79,14 @@ function scrollToTop() {
   }
 
   &__title {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
     grid-column: span 3;
     align-self: center;
     line-height: 1;
   }
 
   &__count {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
     grid-column: span 1;
     justify-self: right;
     align-self: center;
