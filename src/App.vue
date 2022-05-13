@@ -75,7 +75,7 @@ a {
 }
 
 .bg-gray {
-  background: #efefef;
+  background: #f5f5f5;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;

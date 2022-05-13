@@ -32,7 +32,7 @@ const props = defineProps({
   border-radius: 5px;
   margin: 0;
   padding: 0;
-  border: 1px solid #ccc;
+  border: 2px solid rgb(221, 221, 221);
   line-height: 1;
   margin-right: 5px;
   text-decoration: none;

@@ -1,5 +1,5 @@
 <template>
-  <div class="icon-list" v-if="icons">
+  <div class="icon-list" id="icon-list" v-if="icons">
     <router-link
       tag="button"
       class="icon-list__button"
@@ -59,7 +59,7 @@ function openModal(icon) {
     border-radius: 3px;
     display: block;
     text-decoration: none;
-    border: 1px solid #ccc;
+    border: 2px solid #eee;
     cursor: pointer;
 
     img {

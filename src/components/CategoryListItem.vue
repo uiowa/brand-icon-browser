@@ -42,7 +42,7 @@ observer.observe(document.querySelector("#search"));
 
 function scrollToTop() {
   if (!searchVisible) {
-    var element = document.getElementById("browser");
+    var element = document.getElementById("icon-list");
     element.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -59,12 +59,12 @@ function scrollToTop() {
   border-radius: 3px;
   padding: 0 10px;
   text-decoration: none;
-  border: 1px solid rgba(204, 204, 204, 0);
+  border: 2px solid rgba(238, 238, 238, 0);
 
   &:hover,
   &--active {
     background: #fff;
-    border: 1px solid rgba(204, 204, 204, 1);
+    border-color: #eee;
   }
 
   &__icon {
