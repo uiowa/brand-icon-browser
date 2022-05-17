@@ -52,7 +52,7 @@ const icons = iconsData.icons;
 .category-list {
   position: sticky;
   top: 0;
-
+  margin-top: 15px;
   &__list {
     margin: 0;
     padding: 0;

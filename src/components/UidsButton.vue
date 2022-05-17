@@ -26,44 +26,34 @@ const props = defineProps({
 
 <style lang="scss">
 .uids-button {
-  display: inline-block;
-  background: #fff;
-  color: black;
-  border-radius: 5px;
-  margin: 0;
-  padding: 0;
-  border: 2px solid rgb(221, 221, 221);
-  line-height: 1;
-  margin-right: 5px;
-  text-decoration: none;
-}
-.uids-button-inner {
+  background-color: #fff;
+  border: 1px solid #a8a8a8;
+  border-radius: 3px;
+  color: #000;
   padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  &:hover {
-    background: #d0d0d0;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-family: "Roboto", "sans";
+  display: inline-block;
+  margin: 0;
+  text-decoration: none;
+
+  &__inner {
+    display: flex;
   }
 
-  &__icon {
-    display: flex;
-    align-self: left;
-    height: 30px;
-    margin-left: 10px;
-
-    &--text-right {
-      margin-left: 0;
-      margin-right: 10px;
-    }
+  &.active {
+    background-color: #eee;
   }
-
-  &__title {
-    font-family: "Roboto", sans;
-    display: flex;
-    font-size: 0.9rem;
+  span {
     align-self: center;
+  }
+  svg {
+    margin-left: 10px;
+    align-self: center;
+    fill: #fed600;
+    width: 20px;
   }
 }
 </style>

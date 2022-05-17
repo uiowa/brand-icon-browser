@@ -17,17 +17,18 @@
       :currentSearchTerm="currentSearchTerm"
     />
   </div>
-  <Settings
-    @setVariantOneColor="setVariant('one-color')"
-    @setVariantTwoColor="setVariant('two-color')"
-    :currentVariant="currentVariant"
-  />
+
   <div class="bg-gray" id="browser">
     <div class="wrapper">
       <aside>
         <CategoryList />
       </aside>
       <main aria-live="polite">
+        <Settings
+          @setVariantOneColor="setVariant('one-color')"
+          @setVariantTwoColor="setVariant('two-color')"
+          :currentVariant="currentVariant"
+        />
         <router-view
           @openModal="openModal"
           :currentVariant="currentVariant"
@@ -76,7 +77,6 @@ a {
 
 .bg-gray {
   background: #f5f5f5;
-  padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 10px;
 }
