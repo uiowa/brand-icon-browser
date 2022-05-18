@@ -1,41 +1,29 @@
 <template>
   <IowaBar />
-  <div class="wrapper">
-    <header class="header">
-      <h1 class="header__title">
-        <router-link
-          :to="{
-            name: 'Home',
-          }"
-          >Brand Icon Browser</router-link
-        >
-      </h1>
-    </header>
-    <SearchBar
-      id="search"
-      @setCurrentSearchTerm="setCurrentSearchTerm"
-      :currentSearchTerm="currentSearchTerm"
-    />
-  </div>
 
-  <div class="bg-gray" id="browser">
-    <div class="wrapper">
-      <aside>
-        <CategoryList />
-      </aside>
-      <main aria-live="polite">
+  <div class="wrapper">
+    <aside>
+      <CategoryList />
+    </aside>
+    <main aria-live="polite">
+      <div class="toolbar">
+        <SearchBar
+          id="search"
+          @setCurrentSearchTerm="setCurrentSearchTerm"
+          :currentSearchTerm="currentSearchTerm"
+        />
         <Settings
           @setVariantOneColor="setVariant('one-color')"
           @setVariantTwoColor="setVariant('two-color')"
           :currentVariant="currentVariant"
         />
-        <router-view
-          @openModal="openModal"
-          :currentVariant="currentVariant"
-          @setCurrentSearchTerm="setCurrentSearchTerm"
-        />
-      </main>
-    </div>
+      </div>
+      <router-view
+        @openModal="openModal"
+        :currentVariant="currentVariant"
+        @setCurrentSearchTerm="setCurrentSearchTerm"
+      />
+    </main>
   </div>
 
   <teleport to=".modals" v-if="showModal">
@@ -57,9 +45,8 @@ body {
   line-height: 1.6;
   color: #000;
   text-align: left;
-  background-color: #eee;
+  background-color: #f5f5f5;
   text-rendering: optimizeLegibility;
-  background-image: url(assets/pattern-bg.png);
   scroll-behavior: smooth;
 }
 
@@ -75,10 +62,17 @@ a {
   grid-template-columns: repeat(12, 1fr);
 }
 
-.bg-gray {
-  background: #f5f5f5;
-  padding-bottom: 10px;
-  margin-top: 10px;
+.toolbar {
+  padding: 15px 0;
+  background-color: #f5f5f5de;
+  backdrop-filter: blur(5px);
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
 }
 
 .active {

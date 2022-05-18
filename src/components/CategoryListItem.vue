@@ -38,17 +38,17 @@ var observer = new IntersectionObserver(
   { threshold: [1] }
 );
 
-observer.observe(document.querySelector("#search"));
+// observer.observe(document.querySelector("#search"));
 
 function scrollToTop() {
-  if (!searchVisible) {
-    var element = document.getElementById("icon-list");
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-  }
+  // if (!searchVisible) {
+  //   var element = document.getElementById("icon-list");
+  //   element.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //     inline: "nearest",
+  //   });
+  // }
 }
 </script>
 

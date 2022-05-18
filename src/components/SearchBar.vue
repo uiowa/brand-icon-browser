@@ -6,7 +6,7 @@
     >
       <input
         type="search"
-        placeholder="Search over 500 icons by name or category."
+        placeholder="Examples: academics, accessibility, buildings, finance, heart, iowa"
         class="search__input"
         :value="currentSearchTerm"
         @change="setCurrentSearchTerm($event.target.value)"
@@ -14,19 +14,6 @@
       />
       <button class="search__button">Search</button>
     </form>
-    <p class="search__examples">
-      Search examples:
-      <span v-for="term in exampleSearchTerms" :key="term.id">
-        <router-link
-          class="uids-tag"
-          :to="{
-            name: 'Search',
-            params: { term: term },
-          }"
-          >#{{ term }}</router-link
-        >
-      </span>
-    </p>
   </div>
 </template>
 
@@ -40,35 +27,6 @@ const props = defineProps({
   currentSearchTerm: String,
 });
 const emit = defineEmits(["setCurrentSearchTerm"]);
-
-const exampleSearchTerms = [
-  "academics",
-  "art",
-  "accessibility",
-  "buildings",
-  "chart",
-  "checkmark",
-  "communication",
-  "dining",
-  "dei",
-  "dollar sign",
-  "dentistry",
-  "face",
-  "finance",
-  "flower",
-  "graduation",
-  "health",
-  "heart",
-  "iowa",
-  "medical cross",
-  "music",
-  "outdoors",
-  "person",
-  "star",
-  "sports",
-  "tech",
-  "transportation",
-];
 
 function handleSearch(term) {
   if (term) {
@@ -87,12 +45,13 @@ function setCurrentSearchTerm(term) {
 
 <style lang="scss">
 .search {
-  grid-column: 1 / 13;
-  align-self: center;
   @media only screen and (min-width: 1024px) {
-    grid-column: 3 / 11;
+    width: 40%;
   }
 
+  @media only screen and (min-width: 1280px) {
+    width: 65%;
+  }
   &__form {
     display: flex;
     justify-content: center;
@@ -114,16 +73,10 @@ function setCurrentSearchTerm(term) {
     color: black;
     padding: 0 20px;
     border: 1px solid #ccc;
-    border-right: none;
     margin: 0;
     font-size: 1.3rem;
     height: 60px;
     cursor: pointer;
-  }
-  &__examples {
-    padding: 0 30px;
-    text-align: center;
-    font-size: 1rem;
   }
 }
 </style>
