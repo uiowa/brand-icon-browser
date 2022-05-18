@@ -1,7 +1,5 @@
 <template>
-  <main aria-live="polite">
-    <IconList :icons="icons" :variant="currentVariant" @openModal="openModal" />
-  </main>
+  <IconList :icons="icons" :variant="currentVariant" @openModal="openModal" />
 </template>
 
 <script setup>

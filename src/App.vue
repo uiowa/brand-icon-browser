@@ -5,7 +5,8 @@
     <aside>
       <CategoryList />
     </aside>
-    <main aria-live="polite">
+
+    <main>
       <div class="toolbar">
         <SearchBar
           id="search"
@@ -18,6 +19,7 @@
           :currentVariant="currentVariant"
         />
       </div>
+
       <router-view
         @openModal="openModal"
         :currentVariant="currentVariant"
@@ -66,7 +68,7 @@ a {
   padding: 15px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1280px) {
     display: flex;
     justify-content: start;
     align-items: center;

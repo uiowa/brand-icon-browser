@@ -45,11 +45,13 @@ function setCurrentSearchTerm(term) {
 
 <style lang="scss">
 .search {
-  @media only screen and (min-width: 1024px) {
-    width: 40%;
-  }
-
+  // @media only screen and (min-width: 1024px) {
+  //   width: 55%;
+  // }
   @media only screen and (min-width: 1280px) {
+    width: 55%;
+  }
+  @media only screen and (min-width: 1440px) {
     width: 65%;
   }
   &__form {
