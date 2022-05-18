@@ -25,20 +25,20 @@ const props = defineProps({
   category: Object,
 });
 
-var searchVisible = true;
-
-var observer = new IntersectionObserver(
-  function (entries) {
-    if (entries[0].isIntersecting === true) {
-      searchVisible = true;
-    } else {
-      searchVisible = false;
-    }
-  },
-  { threshold: [1] }
-);
-
+// @todo: fix scrolling now that new search has been implemented:
 // observer.observe(document.querySelector("#search"));
+
+// var searchVisible = true;
+// var observer = new IntersectionObserver(
+//   function (entries) {
+//     if (entries[0].isIntersecting === true) {
+//       searchVisible = true;
+//     } else {
+//       searchVisible = false;
+//     }
+//   },
+//   { threshold: [1] }
+// );
 
 function scrollToTop() {
   // if (!searchVisible) {
@@ -57,10 +57,8 @@ function scrollToTop() {
   &__link {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    border-radius: 3px;
     padding: 0 10px;
     text-decoration: none;
-    border: 2px solid rgba(238, 238, 238, 0);
 
     &:hover,
     &--active {
