@@ -35,7 +35,6 @@
       :icon="iconDetails"
     />
   </teleport>
-  <UidsFooter />
 </template>
 
 <style lang="scss">
