@@ -50,8 +50,6 @@ const icons = iconsData.icons;
 
 <style lang="scss">
 .category-list {
-  position: sticky;
-  top: 0;
   margin-top: 15px;
   &__list {
     margin: 0;
