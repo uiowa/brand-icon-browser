@@ -1,5 +1,5 @@
 <template>
-  <IowaBar />
+  <uids-iowa-bar></uids-iowa-bar>
 
   <div class="wrapper">
     <aside>
@@ -38,6 +38,9 @@
 </template>
 
 <style lang="scss">
+@import 'node_modules/uids/src/assets/scss/reset.scss';
+@import 'node_modules/uids/src/components/logo/logo.scss';
+@import 'node_modules/uids/src/components/iowa-bar/iowa-bar.scss';
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
@@ -141,6 +144,7 @@ import IconList from "@/components/IconList.vue";
 import IconModal from "@/components/IconModal.vue";
 import CategoryList from "@/components/CategoryList.vue";
 import iconsData from "/data/icons.json";
+import { UidsIowaBar } from 'uids';
 
 //Initiate app with two color variant for pretty reasons:
 const currentVariant = ref("two-color");
