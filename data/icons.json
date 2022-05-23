@@ -940,7 +940,10 @@
                 "dial",
                 "phone number",
                 "screentime",
-                "screen"
+                "screen",
+                "smart phone",
+                "smartphone",
+                "cell phone"
             ],
             "dateAdded": ""
         }, {
