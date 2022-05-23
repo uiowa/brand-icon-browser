@@ -35,6 +35,11 @@ function handleSearch(term) {
       name: "Search",
       params: { term: term },
     });
+  } else {
+    // If no search term, send the user back home:
+    router.push({
+      name: "Home",
+    });
   }
 }
 
