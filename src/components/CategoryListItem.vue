@@ -71,7 +71,7 @@ function scrollToTop() {
     display: block;
     align-self: center;
     padding: 5px 0;
-    height: 40px;
+    height: 30px;
     grid-column: span 1;
   }
 
