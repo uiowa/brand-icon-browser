@@ -14,8 +14,7 @@
           :currentSearchTerm="currentSearchTerm"
         />
         <Settings
-          @setVariantOneColor="setVariant('one-color')"
-          @setVariantTwoColor="setVariant('two-color')"
+          @toggleVariantColor="toggleVariantColor"
           :currentVariant="currentVariant"
         />
       </div>
@@ -172,8 +171,16 @@ function openModal(icon) {
   iconDetails.value = icon;
 }
 
-function setVariant(variant) {
-  currentVariant.value = variant;
+function toggleVariantColor() {
+  // Wait 200ms before toggling between colors to make the toggle animation smoother.
+  // I don't like this, but feel compelled to do it.
+  setTimeout(() => {
+    if (currentVariant.value == "one-color") {
+      currentVariant.value = "two-color";
+    } else {
+      currentVariant.value = "one-color";
+    }
+  }, 300);
 }
 
 function closeModal() {
