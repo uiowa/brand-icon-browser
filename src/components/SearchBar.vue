@@ -53,11 +53,12 @@ function setCurrentSearchTerm(term) {
   // @media only screen and (min-width: 1024px) {
   //   width: 55%;
   // }
+  width: 90%;
   @media only screen and (min-width: 1280px) {
-    width: 55%;
+    // width: 55%;
   }
   @media only screen and (min-width: 1440px) {
-    width: 65%;
+    // width: 65%;
   }
   &__form {
     display: flex;
