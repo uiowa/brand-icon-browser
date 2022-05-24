@@ -2,16 +2,25 @@ const sharp = require("sharp");
 const fs = require('fs');
 let iconsData = JSON.parse(fs.readFileSync('node_modules/uiowa-brand-icons/icons.json', 'utf-8'));
 
-// only loop through the first item for now, remove .slice to run on entire set
-iconsData.icons.forEach((item) => {
-    createVariant(item.name, "one-color");
-    createVariant(item.name, "two-color");
+fs.rmSync('public/brand-icons', {
+    recursive: true,
+    force: true
 });
+fs.mkdirSync('public/brand-icons');
 
+// only loop through the first item for now, remove .slice to run on entire set
+// iconsData.icons.forEach((item) => {
+//     createVariant(item.name, "one-color");
+//     createVariant(item.name, "two-color");
+// });
+
+// @todo clean this up... a lot.
 async function createVariant(icon, variant) {
+
     var originalImage;
     var destImage;
     try {
+
         switch (variant) {
             case "one-color": originalImage = "node_modules/uiowa-brand-icons/icons/" + icon + ".svg"
                 // one-color-black.png
