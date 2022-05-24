@@ -1,5 +1,7 @@
 <template>
-  <uids-iowa-bar></uids-iowa-bar>
+  <uids-iowa-bar height="narrow">
+    <h1 class="site-name">Brand Icon Browser</h1>
+  </uids-iowa-bar>
 
   <div class="wrapper">
     <aside>
@@ -40,7 +42,7 @@
 <style lang="scss">
 @import 'node_modules/uids/src/assets/scss/reset.scss';
 @import 'node_modules/uids/src/components/logo/logo.scss';
-@import 'node_modules/uids/src/components/iowa-bar/iowa-bar.scss';
+@import 'node_modules/uids/src/components/brand-bar/brand-bar.scss';
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
