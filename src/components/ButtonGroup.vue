@@ -10,10 +10,11 @@ export default {};
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.button-group .uids-button:last-child {
+.button-group .uids-button:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 /* Clear floats (clearfix hack) */
 .button-group:after {
   content: "";

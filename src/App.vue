@@ -190,7 +190,7 @@ import Settings from "@/components/Settings.vue";
 import IconList from "@/components/IconList.vue";
 import IconModal from "@/components/IconModal.vue";
 import CategoryList from "@/components/CategoryList.vue";
-import iconsData from "/data/icons.json";
+import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
 
 //Initiate app with two color variant for pretty reasons:
 const currentVariant = ref("two-color");
@@ -226,10 +226,10 @@ function toggleVariantColor() {
   // Wait 200ms before toggling between colors to make the toggle animation smoother.
   // I don't like this, but feel compelled to do it.
   setTimeout(() => {
-    if (currentVariant.value == "one-color") {
+    if (currentVariant.value == "one-color-black") {
       currentVariant.value = "two-color";
     } else {
-      currentVariant.value = "one-color";
+      currentVariant.value = "one-color-black";
     }
   }, 300);
 }

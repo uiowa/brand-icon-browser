@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import catData from "/data/categories.json";
-import iconsData from "/data/icons.json";
+import catData from "/node_modules/uiowa-brand-icons/categories.json";
+import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
 import CategoryListItem from "@/components/CategoryListItem.vue";
 import Icon from "@/components/Icon.vue";
 
