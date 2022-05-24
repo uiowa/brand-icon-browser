@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "npm run imageBuild.js && vue-cli-service build"
+        "build": "node imageBuild.js && vue-cli-service build"
     },
     "dependencies": {
         "core-js": "^3.8.3",
