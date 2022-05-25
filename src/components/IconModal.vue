@@ -138,7 +138,6 @@ import getIconSrc from "../composables/getIconSrc.js";
 const props = defineProps({
   icon: Object,
   currentCategory: Object,
-  currentSearchTerm: String,
   variant: String,
 });
 

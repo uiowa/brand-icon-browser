@@ -36,11 +36,7 @@
         />
       </div>
 
-      <router-view
-        @openModal="openModal"
-        :currentVariant="currentVariant"
-        @setCurrentSearchTerm="setCurrentSearchTerm"
-      />
+      <router-view @openModal="openModal" :currentVariant="currentVariant" />
     </main>
   </div>
 
