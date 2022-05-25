@@ -12,7 +12,21 @@
         @change="setCurrentSearchTerm($event.target.value)"
         @focus="$event.target.select()"
       />
-      <button class="search__button">Search</button>
+      <button class="search__button">
+        <svg
+          id="search"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 23"
+        >
+          <title>search</title>
+          <path
+            d="M19.82,16.38l-3.15-3.15a6.25,6.25,0,0,0,1.14-3.66,6.36,6.36,0,0,0-.51-2.51A6.68,6.68,0,0,0,15.93,5a6.45,6.45,0,0,0-2.07-1.37,6.41,6.41,0,0,0-5,0A6.29,6.29,0,0,0,6.79,5,6.54,6.54,0,0,0,5.41,7.06a6.43,6.43,0,0,0,0,5,6.47,6.47,0,0,0,5.95,4A6.24,6.24,0,0,0,15,14.89L18.16,18a1.08,1.08,0,0,0,.82.34,1.13,1.13,0,0,0,.83-.34,1.16,1.16,0,0,0,.35-.83A1.13,1.13,0,0,0,19.82,16.38Zm-5.56-3.91a3.94,3.94,0,0,1-2.9,1.21A4.11,4.11,0,0,1,7.25,9.57a4,4,0,0,1,1.2-2.9,4.09,4.09,0,0,1,5.81,0,4,4,0,0,1,1.2,2.9A4,4,0,0,1,14.26,12.47Z"
+          />
+        </svg>
+
+        <span class="sr-only">Search</span>
+      </button>
     </form>
   </div>
 </template>
@@ -50,16 +64,8 @@ function setCurrentSearchTerm(term) {
 
 <style lang="scss">
 .search {
-  // @media only screen and (min-width: 1024px) {
-  //   width: 55%;
-  // }
-  width: 90%;
-  @media only screen and (min-width: 1280px) {
-    // width: 55%;
-  }
-  @media only screen and (min-width: 1440px) {
-    // width: 65%;
-  }
+  width: 100%;
+
   &__form {
     display: flex;
     justify-content: center;
@@ -74,17 +80,32 @@ function setCurrentSearchTerm(term) {
     width: 100%;
     height: 60px;
     font-size: 1.3rem;
+    &:focus {
+      z-index: 1;
+    }
   }
 
   &__button {
-    background: #ffcd00;
     color: black;
+    background: white;
     padding: 0 20px;
-    border: 1px solid #ccc;
+    border-left: 0;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     margin: 0;
     font-size: 1.3rem;
     height: 60px;
     cursor: pointer;
+    svg {
+      display: block;
+      width: 40px;
+    }
   }
+}
+// Hide default mobile Safari search icons
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }
 </style>

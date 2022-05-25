@@ -81,11 +81,9 @@ a {
   padding: 15px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
-  @media only screen and (min-width: 1280px) {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 .sticky {
@@ -178,6 +176,20 @@ main {
 
 .text-center {
   text-align: center;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
 }
 </style>
 <script setup>
