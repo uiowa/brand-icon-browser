@@ -36,6 +36,11 @@ function toggleVariantColor() {
     .m-toggle__content {
       background: #d7d7d7;
       border: 1px solid #bab8b8;
+      padding: 4px;
+
+      &:after {
+        width: calc(50% - 4px);
+      }
     }
   }
 }
