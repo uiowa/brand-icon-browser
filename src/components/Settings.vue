@@ -32,6 +32,7 @@ function toggleVariantColor() {
 .settings {
   &__variant-selector {
     margin-left: auto;
+    padding: 0 20px;
     .m-toggle__content {
       background: #b9b9b9;
     }
