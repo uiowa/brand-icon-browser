@@ -80,6 +80,9 @@ function setCurrentSearchTerm(term) {
     width: 100%;
     height: 60px;
     font-size: 1.3rem;
+    &:focus {
+      z-index: 1;
+    }
   }
 
   &__button {
