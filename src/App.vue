@@ -1,7 +1,7 @@
 <template>
-  <uids-iowa-bar height="narrow">
+  <uids-brand-bar height="narrow">
     <h1 class="site-name">Brand Icon Browser</h1>
-  </uids-iowa-bar>
+  </uids-brand-bar>
 
   <div class="wrapper">
     <aside>
@@ -188,7 +188,6 @@ main {
 <script setup>
 import { ref, computed, onUpdated } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import IowaBar from "@/components/UidsIowaBar.vue";
 import UidsFooter from "@/components/UidsFooter.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import Settings from "@/components/Settings.vue";
@@ -196,7 +195,7 @@ import IconList from "@/components/IconList.vue";
 import IconModal from "@/components/IconModal.vue";
 import CategoryList from "@/components/CategoryList.vue";
 import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
-import { UidsIowaBar } from 'uids';
+import { UidsBrandBar } from 'uids';
 
 //Initiate app with two color variant for pretty reasons:
 const currentVariant = ref("two-color");
