@@ -196,14 +196,14 @@ main {
 <script setup>
 import { ref, computed, onUpdated } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import UidsFooter from "@/components/UidsFooter.vue";
-import SearchBar from "@/components/SearchBar.vue";
-import Settings from "@/components/Settings.vue";
+import { UidsBrandBar } from 'uids';
+import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
+import CategoryList from "@/components/CategoryList.vue";
 import IconList from "@/components/IconList.vue";
 import IconModal from "@/components/IconModal.vue";
-import CategoryList from "@/components/CategoryList.vue";
-import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
-import { UidsBrandBar } from 'uids';
+import SearchBar from "@/components/SearchBar.vue";
+import Settings from "@/components/Settings.vue";
+import UidsFooter from "@/components/UidsFooter.vue";
 
 //Initiate app with two color variant for pretty reasons:
 const currentVariant = ref("two-color");
