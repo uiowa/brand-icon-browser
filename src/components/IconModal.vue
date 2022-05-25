@@ -30,7 +30,6 @@
               <a
                 :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
                 class="uids-button"
-                :class="{ active: currentVariant == 'one-color' }"
                 v-if="getVariantFormat(selectedVariant, 'svg')"
                 download
               >
@@ -49,7 +48,6 @@
                   getIconSrc(icon.name, selectedVariant, 'png', 'square').value
                 "
                 class="uids-button"
-                :class="{ active: currentVariant == 'two-color' }"
                 v-if="getVariantFormat(selectedVariant, 'png')"
                 download
               >
@@ -68,7 +66,6 @@
                   getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
                 "
                 class="uids-button"
-                :class="{ active: currentVariant == 'two-color' }"
                 v-if="getVariantFormat(selectedVariant, 'png')"
                 download
               >
