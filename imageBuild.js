@@ -8,12 +8,13 @@ fs.rmSync('public/brand-icons', {
 });
 fs.mkdirSync('public/brand-icons');
 
-// only loop through the first item for now, remove .slice to run on entire set
+console.log('Building images based on the icons listed in node_modules/uiowa-brand-icons/icons.json. This may take a while.');
+
+// only loop through the first item for now, remove/add .slice(0,1) to run on entire set or a limited set:
 iconsData.icons.forEach((item) => {
     createVariant(item.name, "one-color");
     createVariant(item.name, "two-color");
 });
-
 // @todo clean this up... a lot.
 async function createVariant(icon, variant) {
 
