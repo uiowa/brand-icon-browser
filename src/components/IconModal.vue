@@ -212,6 +212,7 @@ function closeModal(currentCategory, currentSearchTerm) {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(2px);
+    z-index: 99;
   }
 
   &__heading {

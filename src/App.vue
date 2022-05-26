@@ -50,9 +50,9 @@
 </template>
 
 <style lang="scss">
-@import 'node_modules/uids/src/assets/scss/reset.scss';
-@import 'node_modules/uids/src/components/logo/logo.scss';
-@import 'node_modules/uids/src/components/brand-bar/brand-bar.scss';
+@import "node_modules/uids/src/assets/scss/reset.scss";
+@import "node_modules/uids/src/components/logo/logo.scss";
+@import "node_modules/uids/src/components/brand-bar/brand-bar.scss";
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
@@ -76,6 +76,7 @@ a {
   margin: 0 auto;
   padding: 0 10px;
   grid-template-columns: repeat(12, 1fr);
+  max-width: 1550px;
 }
 
 .toolbar {
@@ -120,6 +121,7 @@ a {
 .download-section {
   margin-top: 20px;
   padding-top: 10px;
+  border-top: 1px solid #e3e3e3;
 }
 .download-button {
   border-radius: 3px;
@@ -196,7 +198,7 @@ main {
 <script setup>
 import { ref, computed, onUpdated } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { UidsBrandBar } from 'uids';
+import { UidsBrandBar } from "uids";
 import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
 import CategoryList from "@/components/CategoryList.vue";
 import IconList from "@/components/IconList.vue";

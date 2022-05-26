@@ -6,7 +6,7 @@
     >
       <input
         type="search"
-        placeholder="Examples: academics, accessibility, buildings, finance, heart, iowa"
+        placeholder="Examples: academics, accessibility, buildings, heart, iowa"
         class="search__input"
         :value="currentSearchTerm"
         @change="setCurrentSearchTerm($event.target.value)"
