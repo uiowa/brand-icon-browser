@@ -1,6 +1,8 @@
 <template>
   <uids-brand-bar height="narrow">
-    <h1 class="site-name">Brand Icon Browser</h1>
+    <h1 class="site-name">
+      <router-link :to="{ name: 'Home' }">Brand Icon Browser</router-link>
+    </h1>
   </uids-brand-bar>
 
   <div class="wrapper">
