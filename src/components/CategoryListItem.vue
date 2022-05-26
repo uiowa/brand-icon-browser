@@ -57,7 +57,7 @@ function scrollToTop() {
   &__link {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    padding: 0 10px;
+    padding: 5px 10px;
     text-decoration: none;
 
     &:hover,
@@ -70,7 +70,6 @@ function scrollToTop() {
   &__icon {
     display: block;
     align-self: center;
-    padding: 5px 0;
     height: 30px;
     grid-column: span 1;
   }
@@ -79,7 +78,7 @@ function scrollToTop() {
     font-size: clamp(0.8rem, 1vw, 0.9rem);
     grid-column: span 4;
     align-self: center;
-    line-height: 1;
+    line-height: 1.3;
     padding-left: 10px;
   }
 
