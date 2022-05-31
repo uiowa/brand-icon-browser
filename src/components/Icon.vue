@@ -2,7 +2,8 @@
   <img
     :icon="icon"
     :variant="variant"
-    :src="getIconSrc(icon, variant).value"
+    :format="format"
+    :src="getIconSrc(icon, variant, format).value"
     :alt="icon"
     loading="lazy"
     :class="variant"
