@@ -1,202 +1,241 @@
 const sharp = require("sharp");
-const fs = require('fs');
-let iconsData = JSON.parse(fs.readFileSync('node_modules/uiowa-brand-icons/icons.json', 'utf-8'));
+const fs = require("fs");
+const srcFolder = "node_modules/uiowa-brand-icons/icons/";
+const destFolder = "public/brand-icons/";
+const iconsData = JSON.parse(
+  fs.readFileSync("node_modules/uiowa-brand-icons/icons.json", "utf-8")
+);
 
-fs.rmSync('public/brand-icons', {
+main();
+
+async function main() {
+  // Clear out destination folder, recreate it
+  fs.rmSync(destFolder, {
     recursive: true,
-    force: true
-});
-fs.mkdirSync('public/brand-icons');
+    force: true,
+  });
+  fs.mkdirSync(destFolder);
 
-// only loop through the first item for now, remove .slice to run on entire set
-iconsData.icons.forEach((item) => {
-    createVariant(item.name, "one-color");
-    createVariant(item.name, "two-color");
-});
+  console.log(
+    "Building icon variant images based on the icons in " +
+      srcFolder +
+      "icons.json and placing them in " +
+      destFolder +
+      ". This may take a while..."
+  );
 
-// @todo clean this up... a lot.
+  // -------------------- //
+  // Build image variants:
+  // -------------------- //
+
+  // If you want, you can loop through the first item for testing purposes:
+  //   iconsData.icons.slice(0, 1).forEach((icon) => {
+  iconsData.icons.forEach((icon) => {
+    createVariant(icon.name, "one-color");
+    createVariant(icon.name, "two-color");
+  });
+}
+
+// @todo clean this up...
 async function createVariant(icon, variant) {
+  var originalImagePath = "";
+  var destImagePath = "";
+  var transparentBackground = {
+    r: 0,
+    g: 0,
+    b: 0,
+    alpha: 0,
+  };
 
-    var originalImage;
-    var destImage;
-    try {
+  try {
+    switch (variant) {
+      case "one-color":
+        originalImagePath = srcFolder + icon + ".svg";
+        // one-color-black.png
+        await sharp(originalImagePath)
+          .resize({ width: 751, height: 751 })
+          .png({ colors: 16 })
+          .toFile(destFolder + icon + "-" + variant + "-black.png");
+        // one-color-white.png
+        await sharp(originalImagePath)
+          .modulate({ lightness: 100 })
+          .resize({ width: 751, height: 751 })
+          .png({ colors: 16 })
+          .toFile(destFolder + icon + "-" + variant + "-white.png");
+        // one-color-gold.png (dependent on one-color-black.png)
+        await sharp({
+          create: {
+            width: 751,
+            height: 751,
+            channels: 4,
+            background: "#FFCD00",
+          },
+        })
+          .composite([
+            {
+              input: destFolder + icon + "-one-color-black.png",
+              blend: "dest-in",
+            },
+          ])
+          .resize({ width: 751, height: 751 })
+          .png({ colors: 16 })
+          .toFile(destFolder + icon + "-one-color-gold.png");
 
-        switch (variant) {
-            case "one-color": originalImage = "node_modules/uiowa-brand-icons/icons/" + icon + ".svg"
-                // one-color-black.png
-                await sharp(originalImage).resize({width: 751, height: 751}).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-black.png");
-                // one-color-white.png
-                await sharp(originalImage).modulate({lightness: 100}).resize({width: 751, height: 751}).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-white.png");
-                // one-color-gold.png (dependent on one-color-black.png)
-                await sharp({
-                    create: {
-                        width: 751,
-                        height: 751,
-                        channels: 4,
-                        background: '#FFCD00'
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-black.png",
-                        blend: "dest-in"
-                    },]).resize({width: 751, height: 751}).png({colors: 16}).toFile("public/brand-icons/" + icon + "-one-color-gold.png");
+        // -------------- //
+        // Aspect ratios:
+        // -------------- //
 
+        // white-square (dependent on -one-color-white.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "white",
+          1000,
+          1000,
+          "square",
+          transparentBackground
+        );
+        // white-wide (dependent on -one-color-white.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "white",
+          1920,
+          1080,
+          "wide",
+          transparentBackground
+        );
+        // gold-square (dependent on gold.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "gold",
+          1000,
+          1000,
+          "square",
+          transparentBackground
+        );
+        // gold-wide (dependent on gold.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "gold",
+          1920,
+          1080,
+          "wide",
+          transparentBackground
+        );
+        // one-color-black-square (dependent on one-color-black.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "black",
+          1000,
+          1000,
+          "square",
+          transparentBackground
+        );
 
-                // Aspect ratios (@todo separate function(s) for these?)
+        // one-color-black-wide (dependent on one-color-black.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          "black",
+          1920,
+          1080,
+          "wide",
+          transparentBackground
+        );
+        break;
 
-                // white-square (dependent on -one-color-white.png)
-                await sharp({
-                    create: {
-                        width: 1000,
-                        height: 1000,
-                        channels: 4,
-                        background: 'black'
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-white.png",
-                        blend: "over"
-                    },]).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-white-square.png");
+      case "two-color":
+        originalImagePath = srcFolder + icon + "-two-color.svg";
+        // two-color.svg (no manipulation, just copies svg from node_modules)
+        fs.copyFile(
+          originalImagePath,
+          destFolder + icon + "-" + variant + ".svg",
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
 
-                // white-wide (dependent on -one-color-white.png)
-                await sharp({
-                    create: {
-                        width: 1920,
-                        height: 1080,
-                        channels: 4,
-                        background: 'black'
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-white.png",
-                        blend: "over"
-                    },]).toFile("public/brand-icons/" + icon + "-" + variant + "-white-wide.png");
+        // two-color.png (possibly discontinued for public consumption, but needed for generating the following icons)
+        await sharp(originalImagePath)
+          .resize({ width: 751, height: 751 })
+          .png({ colors: 16 })
+          .toFile(destFolder + icon + "-" + variant + ".png");
 
-
-                // gold-square (dependent on gold.png)
-                await sharp({
-                    create: {
-                        width: 1000,
-                        height: 1000,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-gold.png",
-                        blend: "over"
-                    },]).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-gold-square.png");
-
-                // gold-wide (dependent on gold.png)
-                await sharp({
-                    create: {
-                        width: 1920,
-                        height: 1080,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-gold.png",
-                        blend: "over"
-                    },]).toFile("public/brand-icons/" + icon + "-" + variant + "-gold-wide.png");
-
-                // one-color-black-square (dependent on one-color-black.png)
-                await sharp({
-                    create: {
-                        width: 1000,
-                        height: 1000,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-black.png",
-                        blend: "over"
-                    },]).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-black-square.png");
-
-                // one-color-black-wide (dependent on one-color-black.png)
-                await sharp({
-                    create: {
-                        width: 1920,
-                        height: 1080,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-one-color-black.png",
-                        blend: "over"
-                    },]).toFile("public/brand-icons/" + icon + "-" + variant + "-black-wide.png");
-
-
-                break;
-            case "two-color": originalImage = "node_modules/uiowa-brand-icons/icons/" + icon + "-two-color.svg";
-                // two-color.svg (no manipulation, just copies)
-                fs.copyFile(originalImage, "public/brand-icons/" + icon + "-" + variant + ".svg", (err) => {
-                    if (err) {
-                        console.log("Error Found:", err);
-                    }
-                })
-
-                // two-color.png (possibly discontinued)
-                await sharp(originalImage).resize({width: 751, height: 751}).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + ".png");
-
-                // two-color-wide (dependent on two-color.png)
-                await sharp({
-                    create: {
-                        width: 1920,
-                        height: 1080,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-two-color.png",
-                        blend: "over"
-                    },]).toFile("public/brand-icons/" + icon + "-" + variant + "-wide.png");
-
-                // two-color-square (dependent on two-color.png)
-                await sharp({
-                    create: {
-                        width: 1000,
-                        height: 1000,
-                        channels: 4,
-                        background: {
-                            r: 0,
-                            g: 0,
-                            b: 0,
-                            alpha: 0
-                        }
-                    }
-                }).composite([{
-                        input: "public/brand-icons/" + icon + "-two-color.png",
-                        blend: "over"
-                    },]).png({colors: 16}).toFile("public/brand-icons/" + icon + "-" + variant + "-square.png");
-                break;
-            default:
-
-        }
-    } catch (error) {
-        console.log(error);
+        // two-color-wide (dependent on two-color.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          null,
+          1920,
+          1080,
+          "wide",
+          transparentBackground
+        );
+        // two-color-square (dependent on two-color.png)
+        await createPaddedVariant(
+          icon,
+          variant,
+          null,
+          1000,
+          1000,
+          "square",
+          transparentBackground
+        );
+        break;
+      default:
     }
+  } catch (error) {
+    console.log(error);
+  }
 
-
+  async function createPaddedVariant(
+    icon,
+    variant,
+    color,
+    width,
+    height,
+    ratioName,
+    background
+  ) {
+    var baseImagePath = "";
+    var destPath = "";
+    if (variant == "two-color") {
+      baseImagePath = destFolder + icon + "-two-color.png";
+      destPath = destFolder + icon + "-" + variant + "-" + ratioName + ".png";
+    } else {
+      baseImagePath = destFolder + icon + "-" + variant + "-" + color + ".png";
+      destPath =
+        destFolder +
+        icon +
+        "-" +
+        variant +
+        "-" +
+        color +
+        "-" +
+        ratioName +
+        ".png";
+    }
+    await sharp({
+      create: {
+        width: width,
+        height: height,
+        channels: 4,
+        background: background,
+      },
+    })
+      .composite([
+        {
+          input: baseImagePath,
+          blend: "over",
+        },
+      ])
+      .png({ colors: 16 })
+      .toFile(destPath);
+  }
 }
