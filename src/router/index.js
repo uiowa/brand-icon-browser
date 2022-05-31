@@ -69,7 +69,7 @@ const routes = [
     name: "NotFound",
     component: NotFoundView,
     meta: {
-      title: "Page or icon not found",
+      title: "Page or Icon Not Found",
       metaTags: [
         {
           name: "description",
