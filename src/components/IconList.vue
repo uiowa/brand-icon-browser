@@ -8,7 +8,7 @@
       :to="{ hash: '#' + icon.name }"
       @click="openModal(icon)"
     >
-      <Icon :icon="icon.name" :variant="variant" />
+      <Icon :icon="icon.name" :variant="variant" format="svg" />
       <span class="icon-list__label">{{ icon.name }}</span>
     </router-link>
   </div>
