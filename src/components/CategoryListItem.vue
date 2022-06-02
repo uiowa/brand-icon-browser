@@ -70,8 +70,10 @@ function scrollToTop() {
   &__icon {
     display: block;
     align-self: center;
-    height: 30px;
     grid-column: span 1;
+    img {
+      height: 30px;
+    }
   }
 
   &__title {

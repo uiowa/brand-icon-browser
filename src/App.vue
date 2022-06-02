@@ -240,15 +240,11 @@ function openModal(icon) {
 }
 
 function toggleVariantColor() {
-  // Wait 200ms before toggling between colors to make the toggle animation smoother.
-  // I don't like this, but feel compelled to do it.
-  setTimeout(() => {
-    if (currentVariant.value == "one-color-black") {
-      currentVariant.value = "two-color";
-    } else {
-      currentVariant.value = "one-color-black";
-    }
-  }, 300);
+  if (currentVariant.value == "one-color-black") {
+    currentVariant.value = "two-color";
+  } else {
+    currentVariant.value = "one-color-black";
+  }
 }
 
 function closeModal() {
