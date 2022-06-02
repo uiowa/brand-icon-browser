@@ -8,12 +8,17 @@
       :to="{ hash: '#' + icon.name }"
       @click="openModal(icon)"
     >
-      <Icon :icon="icon.name" :variant="variant" format="svg" />
+      <Icon :icon="icon.name" :variant="variant" />
       <span class="icon-list__label">{{ icon.name }}</span>
     </router-link>
   </div>
   <div class="content text-center" v-if="icons.length == 0">
-    <Icon icon="heart-break" variant="two-color" class="not-found-icon" />
+    <Icon
+      icon="heart-break"
+      format="svg"
+      variant="two-color"
+      class="not-found-icon"
+    />
     <p>No icons found.</p>
   </div>
 </template>
