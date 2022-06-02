@@ -51,6 +51,18 @@ async function createVariant(icon, variant) {
     switch (variant) {
       case "one-color":
         originalImagePath = srcFolder + icon + ".svg";
+
+        // one-color-black.svg (no manipulation, just copies svg from node_modules)
+        fs.copyFile(
+          originalImagePath,
+          destFolder + icon + "-" + variant + "-black.svg",
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
+
         // one-color-black.png
         await sharp(originalImagePath)
           .resize({ width: 751, height: 751 })
