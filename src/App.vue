@@ -85,13 +85,16 @@ a {
   padding: 15px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: start;
-  align-items: center;
+
+  @media only screen and (min-width: 760px) {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 }
 
 .sticky {
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 760px) {
     position: sticky;
     top: 0;
   }
