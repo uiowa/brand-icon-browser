@@ -16,110 +16,115 @@
           />
         </svg>
       </div>
-      <div class="modal__icon-preview-wrapper">
-        <div>
-          <div class="icon-preview" :class="iconPreviewClass">
-            <Icon
-              :icon="icon.name"
-              :variant="selectedVariant"
-              class="icon-preview__img"
-            />
-          </div>
-        </div>
-        <div class="modal__preview-actions">
+      <div class="modal__body">
+        <div class="modal__icon-preview-wrapper">
           <div>
-            <h1 class="modal__heading">{{ icon.name }}</h1>
-            <p class="text-center">Select a variant:</p>
-            <div class="modal__icon-variants-wrapper">
-              <div
-                v-for="value in variantFormats"
-                class="icon-preview icon-preview--small"
-                :class="[
-                  { active: selectedVariant == value.variant },
-                  'icon-preview--' + value.variant,
-                ]"
-                :key="value.variant"
-              >
-                <Icon
-                  class="icon-preview__img"
-                  :icon="icon.name"
-                  :variant="value.variant"
-                  @click="changeSelectedVariant(value.variant)"
-                />
+            <div class="icon-preview" :class="iconPreviewClass">
+              <Icon
+                :icon="icon.name"
+                :variant="selectedVariant"
+                class="icon-preview__img"
+              />
+            </div>
+          </div>
+          <div class="modal__preview-actions">
+            <div>
+              <h1 class="modal__heading">{{ icon.name }}</h1>
+              <p class="text-center">Select a variant:</p>
+              <div class="modal__icon-variants-wrapper">
+                <div
+                  v-for="value in variantFormats"
+                  class="icon-preview icon-preview--small"
+                  :class="[
+                    { active: selectedVariant == value.variant },
+                    'icon-preview--' + value.variant,
+                  ]"
+                  :key="value.variant"
+                >
+                  <Icon
+                    class="icon-preview__img"
+                    :icon="icon.name"
+                    :variant="value.variant"
+                    @click="changeSelectedVariant(value.variant)"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="icon-preview__download">
-        <a
-          :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
-          class="uids-button"
-          v-if="getVariantFormat(selectedVariant, 'svg')"
-          download
-        >
-          <div class="uids-button__inner">
-            <span>SVG</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-              />
-            </svg>
+        <div class="modal__icon-preview-wrapper">
+          <div class="icon-preview__download">
+            <a
+              :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
+              class="uids-button"
+              v-if="getVariantFormat(selectedVariant, 'svg')"
+              download
+            >
+              <div class="uids-button__inner">
+                <span>SVG</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
+                  />
+                </svg>
+              </div>
+            </a>
+            <a
+              :href="
+                getIconSrc(icon.name, selectedVariant, 'png', 'square').value
+              "
+              class="uids-button"
+              v-if="getVariantFormat(selectedVariant, 'png')"
+              download
+            >
+              <div class="uids-button__inner">
+                <span>PNG (1:1)</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
+                  />
+                </svg>
+              </div>
+            </a>
+            <a
+              :href="
+                getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
+              "
+              class="uids-button"
+              v-if="getVariantFormat(selectedVariant, 'png')"
+              download
+            >
+              <div class="uids-button__inner">
+                <span>PNG (16:9)</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
+                  />
+                </svg>
+              </div>
+            </a>
           </div>
-        </a>
-        <a
-          :href="getIconSrc(icon.name, selectedVariant, 'png', 'square').value"
-          class="uids-button"
-          v-if="getVariantFormat(selectedVariant, 'png')"
-          download
-        >
-          <div class="uids-button__inner">
-            <span>PNG (1:1)</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-              />
-            </svg>
-          </div>
-        </a>
-        <a
-          :href="getIconSrc(icon.name, selectedVariant, 'png', 'wide').value"
-          class="uids-button"
-          v-if="getVariantFormat(selectedVariant, 'png')"
-          download
-        >
-          <div class="uids-button__inner">
-            <span>PNG (16:9)</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-              />
-            </svg>
-          </div>
-        </a>
-      </div>
-      <div class="tags">
-        <span
-          v-for="term in icon.keywords"
-          :key="term.id"
-          @click="closeModal()"
-        >
-          <router-link
-            class="uids-tag"
-            :to="{
-              name: 'Search',
-              params: { term: term },
-            }"
-            >#{{ term }}</router-link
+        </div>
+        <div class="tags">
+          <span
+            v-for="term in icon.keywords"
+            :key="term.id"
+            @click="closeModal()"
           >
-        </span>
+            <router-link
+              class="uids-tag"
+              :to="{
+                name: 'Search',
+                params: { term: term },
+              }"
+              >#{{ term }}</router-link
+            >
+          </span>
+        </div>
       </div>
-      <!-- <div class="modal__actions">
-        <button @click="closeModal()">Close</button>
-      </div> -->
     </div>
   </div>
 </template>
@@ -190,15 +195,20 @@ function closeModal(currentCategory, currentSearchTerm) {
 
 <style lang="scss">
 .modal {
-  height: 100vh;
   width: 75%;
-  overflow-y: scroll;
+
   padding: 30px;
   padding-top: 20px;
   margin: 20px auto;
   background: #fff;
   border-radius: 4px;
   border: 1px solid #ccc;
+
+  &__body {
+    //height: 80vh;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+  }
 
   @media only screen and (min-width: 768px) {
     margin: 100px auto;
@@ -327,6 +337,5 @@ function closeModal(currentCategory, currentSearchTerm) {
 
 .tags {
   margin-top: 20px;
-  text-align: center;
 }
 </style>
