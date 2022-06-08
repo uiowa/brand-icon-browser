@@ -90,7 +90,7 @@
               v-for="value in variantFormats"
               class="icon-preview icon-preview--small"
               :class="[
-                { active: selectedVariant == value.variant },
+                { 'icon-preview--active': selectedVariant == value.variant },
                 'icon-preview--' + value.variant,
               ]"
               :key="value.variant"
@@ -277,8 +277,9 @@ function closeModal(currentCategory, currentSearchTerm) {
   padding: 10%;
   border: 2px solid #eee;
   border-radius: 4px;
-  background: white;
-
+  background-color: white;
+  background: repeating-conic-gradient(#f1f1f1 0% 25%, transparent 0% 50%) 50% /
+    50px 50px;
   &__img {
     display: block;
     width: 100%;
@@ -286,9 +287,18 @@ function closeModal(currentCategory, currentSearchTerm) {
 
   &--small {
     border: 2px solid #eee;
+    background: #fff;
     cursor: pointer;
   }
-  &.active {
+
+  &--small.icon-preview--one-color-white {
+    background: #000;
+
+    &.icon-preview--active {
+      background: #000;
+    }
+  }
+  &.icon-preview--active {
     background: white;
     border-color: #ffcd00;
   }
@@ -298,12 +308,9 @@ function closeModal(currentCategory, currentSearchTerm) {
   }
 }
 
-.icon-preview--one-color-white.active {
-  background: #545454;
-}
-
 .icon-preview--one-color-white {
-  background: #222;
+  background: repeating-conic-gradient(#1f1f1f 0% 25%, #000 0% 50%) 50% / 50px
+    50px;
 }
 
 .tags {
