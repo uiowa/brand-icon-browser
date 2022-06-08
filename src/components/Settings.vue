@@ -1,5 +1,5 @@
 <template>
-  <div class="button-group settings__variant-selector">
+  <div class="settings__variant-selector">
     <vue-toggle
       activeColor="#ffcd00"
       title="Color"
@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import ButtonGroup from "@/components/ButtonGroup.vue";
 import Icon from "@/components/Icon.vue";
 import { defineProps } from "vue";
 import VueToggle from "vue-toggle-component";
@@ -31,8 +30,13 @@ function toggleVariantColor() {
 <style lang="scss">
 .settings {
   &__variant-selector {
-    margin-left: auto;
-    padding: 0 20px;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 0;
+    @media only screen and (min-width: 760px) {
+      margin-left: auto;
+      padding: 0 20px;
+    }
     .m-toggle__content {
       background: #d7d7d7;
       border: 1px solid #bab8b8;
