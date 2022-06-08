@@ -54,9 +54,7 @@
             <a
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'svg')"
-              download
-            >
+              v-if="getVariantFormat(selectedVariant, 'svg')">
               <div class="uids-button__inner">
                 <span>SVG</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -301,8 +299,9 @@ function closeModal() {
   padding: 10%;
   border: 2px solid #eee;
   border-radius: 4px;
-  background: white;
-
+  background-color: white;
+  background: repeating-conic-gradient(#f1f1f1 0% 25%, transparent 0% 50%) 50% /
+    50px 50px;
   &__img {
     display: block;
     width: 65%;
@@ -315,9 +314,18 @@ function closeModal() {
 
   &--small {
     border: 2px solid #eee;
+    background: #fff;
     cursor: pointer;
   }
-  &.active {
+
+  &--small.icon-preview--one-color-white {
+    background: #000;
+
+    &.icon-preview--active {
+      background: #000;
+    }
+  }
+  &.icon-preview--active {
     background: white;
     border-color: #ffcd00;
   }
@@ -329,14 +337,6 @@ function closeModal() {
       margin-bottom: 5px;
     }
   }
-}
-
-.icon-preview--one-color-white.active {
-  background: #545454;
-}
-
-.icon-preview--one-color-white {
-  background: #222;
 }
 
 .tags {
