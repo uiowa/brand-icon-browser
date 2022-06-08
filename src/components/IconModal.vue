@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="modal__backdrop"
-    @click.self="closeModal(currentCategory, currentSearchTerm)"
-  >
+  <div class="modal__backdrop" @click.self="closeModal()">
     <div class="modal">
       <div class="modal__actions">
         <svg
@@ -148,6 +145,12 @@ const emit = defineEmits(["closeModal"]);
 
 selectedVariant.value = props.variant;
 
+//Close modal upon pressing Esc
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
 // Necessary to map which formats go with variants
 // since we don't provide all formats for all variants.
 const variantFormats = [
@@ -188,15 +191,14 @@ function changeSelectedVariant(variant) {
   selectedVariant.value = variant;
 }
 
-function closeModal(currentCategory, currentSearchTerm) {
-  emit("closeModal", currentCategory, currentSearchTerm);
+function closeModal() {
+  emit("closeModal");
 }
 </script>
 
 <style lang="scss">
 .modal {
   width: 75%;
-
   padding: 30px;
   padding-top: 20px;
   margin: 20px auto;
@@ -205,7 +207,6 @@ function closeModal(currentCategory, currentSearchTerm) {
   border: 1px solid #ccc;
 
   &__body {
-    //height: 80vh;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
   }
@@ -238,11 +239,14 @@ function closeModal(currentCategory, currentSearchTerm) {
   &__heading {
     text-align: center;
     line-height: 1;
-    margin-top: 0;
+    margin-top: 20px;
     margin-bottom: 20px;
     padding: 0;
     display: grid;
     align-self: center;
+    @media only screen and (min-width: 768px) {
+      margin-top: 0;
+    }
   }
 
   &__actions {
@@ -319,10 +323,11 @@ function closeModal(currentCategory, currentSearchTerm) {
     border-color: #ffcd00;
   }
   &__download {
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
     .uids-button {
       margin-right: 5px;
+      margin-bottom: 5px;
     }
   }
 }
