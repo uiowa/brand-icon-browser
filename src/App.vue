@@ -66,6 +66,11 @@ body {
   background-color: #f5f5f5;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+
+  &.modal-open {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 a {
@@ -236,6 +241,7 @@ function setCurrentSearchTerm(term) {
 
 function openModal(icon) {
   showModal.value = true;
+  document.body.classList.add("modal-open");
   iconDetails.value = icon;
 }
 
@@ -253,6 +259,7 @@ function toggleVariantColor() {
 
 function closeModal() {
   router.push({ hash: "" });
+  document.body.classList.remove("modal-open");
   showModal.value = false;
 }
 </script>
