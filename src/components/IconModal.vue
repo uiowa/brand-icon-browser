@@ -308,11 +308,6 @@ function closeModal(currentCategory, currentSearchTerm) {
   }
 }
 
-.icon-preview--one-color-white {
-  background: repeating-conic-gradient(#1f1f1f 0% 25%, #000 0% 50%) 50% / 50px
-    50px;
-}
-
 .tags {
   margin-top: 30px;
 }
