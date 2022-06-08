@@ -33,7 +33,9 @@
                   v-for="value in variantFormats"
                   class="icon-preview icon-preview--small"
                   :class="[
-                    { active: selectedVariant == value.variant },
+                    {
+                      'icon-preview--active': selectedVariant == value.variant,
+                    },
                     'icon-preview--' + value.variant,
                   ]"
                   :key="value.variant"
@@ -54,7 +56,8 @@
             <a
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'svg')">
+              v-if="getVariantFormat(selectedVariant, 'svg')"
+            >
               <div class="uids-button__inner">
                 <span>SVG</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
