@@ -1,19 +1,27 @@
 const { defineConfig } = require("@vue/cli-service");
 const path = require("path");
+const fs = require("fs");
 const PrerenderSPAPlugin = require("prerender-spa-plugin-next");
 const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
+const catData = JSON.parse(
+  fs.readFileSync("node_modules/uiowa-brand-icons/categories.json", "utf-8")
+);
 module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: (config) => {
-    // if (process.env.NODE_ENV !== "production") return;
+    //Prerender the homepage route and all category routes:
+    const categories = catData.categories;
+    let preRenderRoutes = ["/"];
+
+    categories.forEach((item) =>
+      preRenderRoutes.push("/category/" + item.slug)
+    );
 
     return {
       plugins: [
         new PrerenderSPAPlugin({
-          // Required - The path to the webpack-outputted app to prerender.
           staticDir: path.join(__dirname, "dist"),
-          // Required - Routes to render.
-          routes: ["/", "/category/home-personal/"],
+          routes: preRenderRoutes,
         }),
       ],
     };
