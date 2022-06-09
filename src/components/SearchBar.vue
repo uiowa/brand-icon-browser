@@ -71,7 +71,7 @@ function setCurrentSearchTerm(term) {
     justify-content: center;
     align-items: center;
   }
-  &__input {
+  &__input[type="search"] {
     display: block;
     margin: 0;
     border: 1px solid #ccc;
@@ -80,15 +80,22 @@ function setCurrentSearchTerm(term) {
     width: 100%;
     height: 60px;
     font-size: 1.3rem;
+    border-radius: 0;
+    -webkit-appearance: none;
+    background: white;
     &:focus {
       z-index: 1;
     }
   }
-
+  // Hide default mobile Safari search icons
+  &__input[type="search"]::-webkit-search-decoration,
+  &__input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
   &__button {
     color: black;
     background: white;
-    padding: 0 20px;
+    padding: 0 5px;
     border-left: 0;
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -97,15 +104,14 @@ function setCurrentSearchTerm(term) {
     font-size: 1.3rem;
     height: 60px;
     cursor: pointer;
+
+    @media only screen and (min-width: 760px) {
+      padding: 0 20px;
+    }
     svg {
       display: block;
       width: 40px;
     }
   }
-}
-// Hide default mobile Safari search icons
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-results-decoration {
-  display: none;
 }
 </style>

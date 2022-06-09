@@ -66,6 +66,11 @@ body {
   background-color: #f5f5f5;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+
+  &.modal-open {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 a {
@@ -85,13 +90,16 @@ a {
   padding: 15px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: start;
-  align-items: center;
+
+  @media only screen and (min-width: 760px) {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 }
 
 .sticky {
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 760px) {
     position: sticky;
     top: 0;
   }
@@ -236,6 +244,7 @@ function setCurrentSearchTerm(term) {
 
 function openModal(icon) {
   showModal.value = true;
+  document.body.classList.add("modal-open");
   iconDetails.value = icon;
 }
 
@@ -253,6 +262,7 @@ function toggleVariantColor() {
 
 function closeModal() {
   router.push({ hash: "" });
+  document.body.classList.remove("modal-open");
   showModal.value = false;
 }
 </script>
