@@ -101,7 +101,9 @@
                 </svg>
               </div>
             </a>
+            
           </div>
+          
         </div>
         <div class="tags">
           <span
@@ -119,6 +121,7 @@
             >
           </span>
         </div>
+        <p class="feedback text-center"><a :href="'mailto:osc-brand@uiowa.edu?subject=Feedback about brand icon: ' + icon.name">Submit feedback about this icon</a></p>
       </div>
     </div>
   </div>
@@ -195,6 +198,7 @@ function closeModal() {
 </script>
 
 <style lang="scss">
+
 .modal {
   width: 75%;
   padding: 30px;
