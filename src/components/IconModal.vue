@@ -33,7 +33,9 @@
                   v-for="value in variantFormats"
                   class="icon-preview icon-preview--small"
                   :class="[
-                    { active: selectedVariant == value.variant },
+                    {
+                      'icon-preview--active': selectedVariant == value.variant,
+                    },
                     'icon-preview--' + value.variant,
                   ]"
                   :key="value.variant"
@@ -61,9 +63,7 @@
             <i class="fas fa-download"></i>
             </uids-button>
             <uids-button
-              :href="
-                getIconSrc(icon.name, selectedVariant, 'png', 'square').value
-              "
+              :href="getIconSrc(icon.name, selectedVariant, 'png', 'square').value"
               v-if="getVariantFormat(selectedVariant, 'png')"
               download
               color="tertiary"
@@ -84,10 +84,8 @@
               color="tertiary"
               :outline="true"
             >
-       
              PNG (16:9)
               <i class="fas fa-download"></i>
-       
             </uids-button>
           </div>
         </div>
