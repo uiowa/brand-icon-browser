@@ -134,6 +134,8 @@ a {
 }
 .bttn.download-button {
   display: block;
+  border-color: #ccc;
+  background: white;
 }
 aside {
   grid-column: 1 / 13;

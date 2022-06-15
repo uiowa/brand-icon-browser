@@ -321,9 +321,11 @@ function closeModal() {
   &__download {
     margin-top: 20px;
     text-align: center;
+  
     .bttn {
       margin-right: 5px;
       margin-bottom: 5px;
+      border-color: #ccc;
     }
   }
 }
