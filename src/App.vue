@@ -15,6 +15,7 @@
             color="tertiary"
             class="download-button"
             :arrow="false"
+            :outline="true"
             download
             >Download all
             <i class="fas fa-download"></i>
@@ -130,7 +131,6 @@ a {
 .download-section {
   margin-top: 20px;
   padding-top: 10px;
-  border-top: 1px solid #e3e3e3;
 }
 .bttn.download-button {
   display: block;

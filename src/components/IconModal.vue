@@ -56,6 +56,7 @@
               v-if="getVariantFormat(selectedVariant, 'svg')"
               color="tertiary"
               :arrow="false"
+              :outline="true"
             >SVG
             <i class="fas fa-download"></i>
             </uids-button>
@@ -67,6 +68,7 @@
               download
               color="tertiary"
               :arrow="false"
+              :outline="true"
             >
               PNG (1:1)
               <i class="fas fa-download"></i>
@@ -80,6 +82,7 @@
               :arrow="false"
               download
               color="tertiary"
+              :outline="true"
             >
        
              PNG (16:9)
@@ -318,7 +321,7 @@ function closeModal() {
   &__download {
     margin-top: 20px;
     text-align: center;
-    .uids-button {
+    .bttn {
       margin-right: 5px;
       margin-bottom: 5px;
     }
