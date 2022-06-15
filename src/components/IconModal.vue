@@ -104,7 +104,9 @@
                 </svg>
               </div>
             </a>
+            
           </div>
+          
         </div>
         <div class="tags">
           <span
@@ -198,6 +200,7 @@ function closeModal() {
 </script>
 
 <style lang="scss">
+
 .modal {
   width: 75%;
   padding: 30px;

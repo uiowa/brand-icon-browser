@@ -22,6 +22,7 @@
             </svg>
           </a>
         </div>
+        <p class="feedback"><a href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback">Submit feedback</a></p>
       </div>
     </aside>
 
@@ -203,6 +204,11 @@ main {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
+}
+.feedback{
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 14px;
 }
 </style>
 <script setup>
