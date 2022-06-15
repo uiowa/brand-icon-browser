@@ -130,7 +130,6 @@ a {
 
 .download-section {
   margin-top: 20px;
-  padding-top: 10px;
 }
 .bttn.download-button {
   display: block;
