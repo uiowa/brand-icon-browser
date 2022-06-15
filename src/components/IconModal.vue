@@ -121,7 +121,6 @@
             >
           </span>
         </div>
-        <p class="feedback text-center"><a :href="'mailto:osc-brand@uiowa.edu?subject=Feedback about brand icon: ' + icon.name">Submit feedback about this icon</a></p>
       </div>
     </div>
   </div>
