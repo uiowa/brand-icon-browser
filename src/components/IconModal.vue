@@ -207,7 +207,6 @@ function closeModal() {
   padding-top: 20px;
   margin: 20px auto;
   background: #fff;
-  border-radius: 4px;
   border: 1px solid #ccc;
 
   &__body {
@@ -303,8 +302,7 @@ function closeModal() {
 
 .icon-preview {
   padding: 10%;
-  border: 2px solid #eee;
-  border-radius: 4px;
+  border: 1px solid #ccc;
   background-color: white;
   background: repeating-conic-gradient(#f1f1f1 0% 25%, transparent 0% 50%) 50% /
     50px 50px;
@@ -319,7 +317,7 @@ function closeModal() {
   }
 
   &--small {
-    border: 2px solid #eee;
+    border: 1px solid #ccc;
     background: #fff;
     cursor: pointer;
   }

@@ -92,7 +92,7 @@ a {
 }
 
 .toolbar {
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
 
