@@ -28,15 +28,31 @@
 
     <main>
       <div class="toolbar sticky">
-        <SearchBar
-          id="search"
-          @setCurrentSearchTerm="setCurrentSearchTerm"
-          :currentSearchTerm="currentSearchTerm"
-        />
-        <Settings
-          @toggleVariantColor="toggleVariantColor"
-          :currentVariant="currentVariant"
-        />
+        <div class="toolbar__search-settings">
+          <SearchBar
+            id="search"
+            @setCurrentSearchTerm="setCurrentSearchTerm"
+            :currentSearchTerm="currentSearchTerm"
+          />
+          <Settings
+            @toggleVariantColor="toggleVariantColor"
+            :currentVariant="currentVariant"
+          />
+        </div>
+        <div class="toolbar__tags-container">
+          <div class="toolbar__tags">
+            <span v-for="term in exampleSearchTerms" :key="term.id">
+              <router-link
+                class="uids-tag"
+                :to="{
+                  name: 'Search',
+                  params: { term: term },
+                }"
+                >#{{ term }}</router-link
+              >
+            </span>            
+          </div>
+        </div>
       </div>
 
       <router-view
@@ -92,15 +108,40 @@ a {
 }
 
 .toolbar {
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
+  max-width: 100%;
 
-  @media only screen and (min-width: 760px) {
-    display: flex;
-    justify-content: start;
-    align-items: center;
+
+  &__search-settings{
+    @media only screen and (min-width: 760px) {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
   }
+
+  &__tags-container{
+    margin-top: 10px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__tags{
+    width: 3000px;
+    display: flex;
+    .uids-tag{
+      margin-bottom: 0;
+      background: white;
+    }
+  }
+
+
 }
 
 .sticky {
@@ -235,7 +276,34 @@ const route = useRoute();
 const showModal = ref(false);
 const iconDetails = ref("");
 const currentSearchTerm = ref("");
-
+const exampleSearchTerms = [
+  "academics",
+  "art",
+  "accessibility",
+  "buildings",
+  "chart",
+  "checkmark",
+  "communication",
+  "dining",
+  "dei",
+  "dollar sign",
+  "dentistry",
+  "face",
+  "finance",
+  "flower",
+  "graduation",
+  "health",
+  "heart",
+  "iowa",
+  "medical cross",
+  "music",
+  "outdoors",
+  "person",
+  "star",
+  "sports",
+  "tech",
+  "transportation",
+];
 //If we have an icon in the current URL params, show the icon modal:
 if (window.location.hash) {
   let currentIconId = window.location.hash.replace("#", "");
