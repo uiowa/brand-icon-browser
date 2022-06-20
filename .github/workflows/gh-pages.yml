@@ -30,7 +30,7 @@ jobs:
 
       # https://github.com/actions/checkout#readme
       - name: Checkout docs
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: gh-pages
           path: gh-pages
@@ -41,12 +41,12 @@ jobs:
 #      - run: ls -lah $GITHUB_WORKSPACE/gh-pages
 
       - name: Setup node
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: "14.x"
+          node-version: "14"
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: npm-packages-${{ hashFiles('**/package-lock.json') }}
@@ -89,8 +89,8 @@ jobs:
 
       # https://github.com/JamesIves/github-pages-deploy-action#readme
       - name: Deploy docs 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ env.TARGET_BRANCH }} # The branch the action should deploy to.
-          FOLDER: gh-pages # The folder the action should deploy.
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.TARGET_BRANCH }} # The branch the action should deploy to.
+          folder: gh-pages # The folder the action should deploy.
