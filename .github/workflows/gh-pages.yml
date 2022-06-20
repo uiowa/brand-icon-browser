@@ -51,7 +51,10 @@ jobs:
           path: ~/.npm
           key: npm-packages-${{ hashFiles('**/package-lock.json') }}
           restore-keys: npm-packages-
-
+          
+      - name: Globally update npm
+        run: npm install -g npm@latest
+        
       - run: npm install
       # Check to make sure that docs built into www.
 #      - run: ls -lah $GITHUB_WORKSPACE/www
