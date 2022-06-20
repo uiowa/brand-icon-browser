@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TARGET_BRANCH: gh-pages
-      MAIN_BRANCH: main
+      MAIN_BRANCH: feature_gh_pages_actions
       DEVELOP_BRANCH: develop
 
     # Steps represent a sequence of tasks that will be executed as part of the job
