@@ -59,12 +59,12 @@ jobs:
       # Check to make sure that docs built into www.
 #      - run: ls -lah $GITHUB_WORKSPACE/www
 
-      # Debugging messages.
-#      - run: echo "${{ github.ref }}"
-#      - run: echo "${{ env.MAIN_BRANCH }}"
-#      - run: echo "Main check - ${{ github.ref == format('refs/heads/{0}', env.MAIN_BRANCH) }}"
-#      - run: echo "Branch check - ${{ contains(github.ref, 'refs/heads/') && github.ref != format('refs/heads/{0}', env.MAIN_BRANCH) }}"
-#      - run: echo "Tags check - ${{ startsWith(github.ref, 'refs/tags/') }}"
+     # Debugging messages.
+     - run: echo "${{ github.ref }}"
+     - run: echo "${{ env.MAIN_BRANCH }}"
+     - run: echo "Main check - ${{ github.ref == format('refs/heads/{0}', env.MAIN_BRANCH) }}"
+     - run: echo "Branch check - ${{ contains(github.ref, 'refs/heads/') && github.ref != format('refs/heads/{0}', env.MAIN_BRANCH) }}"
+     - run: echo "Tags check - ${{ startsWith(github.ref, 'refs/tags/') }}"
 
       # Only one of the following 3 steps should run.
 
