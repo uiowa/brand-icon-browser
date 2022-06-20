@@ -22,6 +22,7 @@
             </svg>
           </a>
         </div>
+        <p class="feedback"><a href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback">Submit feedback</a></p>
       </div>
     </aside>
 
@@ -38,7 +39,11 @@
         />
       </div>
 
-      <router-view @openModal="openModal" :currentVariant="currentVariant" />
+      <router-view
+        @openModal="openModal"
+        @setCurrentSearchTerm="setCurrentSearchTerm"
+        :currentVariant="currentVariant"
+      />
     </main>
   </div>
 
@@ -87,7 +92,7 @@ a {
 }
 
 .toolbar {
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
 
@@ -203,6 +208,11 @@ main {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
+}
+.feedback{
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 14px;
 }
 </style>
 <script setup>

@@ -33,7 +33,9 @@
                   v-for="value in variantFormats"
                   class="icon-preview icon-preview--small"
                   :class="[
-                    { active: selectedVariant == value.variant },
+                    {
+                      'icon-preview--active': selectedVariant == value.variant,
+                    },
                     'icon-preview--' + value.variant,
                   ]"
                   :key="value.variant"
@@ -54,7 +56,8 @@
             <a
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'svg')">
+              v-if="getVariantFormat(selectedVariant, 'svg')"
+            >
               <div class="uids-button__inner">
                 <span>SVG</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -101,7 +104,9 @@
                 </svg>
               </div>
             </a>
+            
           </div>
+          
         </div>
         <div class="tags">
           <span
@@ -195,13 +200,13 @@ function closeModal() {
 </script>
 
 <style lang="scss">
+
 .modal {
   width: 75%;
   padding: 30px;
   padding-top: 20px;
   margin: 20px auto;
   background: #fff;
-  border-radius: 4px;
   border: 1px solid #ccc;
 
   &__body {
@@ -297,8 +302,7 @@ function closeModal() {
 
 .icon-preview {
   padding: 10%;
-  border: 2px solid #eee;
-  border-radius: 4px;
+  border: 1px solid #ccc;
   background-color: white;
   background: repeating-conic-gradient(#f1f1f1 0% 25%, transparent 0% 50%) 50% /
     50px 50px;
@@ -313,7 +317,7 @@ function closeModal() {
   }
 
   &--small {
-    border: 2px solid #eee;
+    border: 1px solid #ccc;
     background: #fff;
     cursor: pointer;
   }
