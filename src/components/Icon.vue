@@ -1,12 +1,10 @@
 <template>
-  <img
-    :icon="icon"
-    :variant="variant"
-    :src="getIconSrc(icon, variant).value"
-    :alt="icon"
-    loading="lazy"
-    :class="variant"
-  />
+
+
+<svg class="variant">
+    <use :xlink:href="'/sprite.svg#' + icon + '-' + variant"></use>
+</svg>
+
 </template>
 
 <script setup>
