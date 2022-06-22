@@ -4,7 +4,7 @@ name: Publish Brand Icon Browser to GitHub Pages
 on:
   push:
     branches:
-      - feature_gh_pages_actions
+      - main
       - develop
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TARGET_BRANCH: gh-pages
-      MAIN_BRANCH: feature_gh_pages_actions
+      MAIN_BRANCH: main
       DEVELOP_BRANCH: develop
 
     # Steps represent a sequence of tasks that will be executed as part of the job
