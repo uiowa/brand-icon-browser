@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: 'auto'
+  publicPath: 'process.env.NODE_ENV === "production" ? "/brand-icon-browser/" : "/",'
 })
