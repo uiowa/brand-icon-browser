@@ -44,13 +44,12 @@ function openModal(icon) {
 .icon-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5px;
+  grid-gap: 10px;
   @media only screen and (min-width: 760px) {
     grid-template-columns: repeat(3, 1fr);
   }
   @media only screen and (min-width: 1280px) {
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
   }
   @media only screen and (min-width: 1440px) {
     grid-template-columns: repeat(7, 1fr);
@@ -61,10 +60,9 @@ function openModal(icon) {
     padding-bottom: 15px;
     padding-left: 30px;
     padding-right: 30px;
-    border-radius: 3px;
     display: block;
     text-decoration: none;
-    border: 2px solid #eee;
+    border: 1px solid #ccc;
     cursor: pointer;
 
     img {
