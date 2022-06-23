@@ -45,6 +45,7 @@
                     :icon="icon.name"
                     :variant="value.variant"
                     @click="changeSelectedVariant(value.variant)"
+
                   />
                 </div>
               </div>
