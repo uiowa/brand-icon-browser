@@ -47,17 +47,17 @@ const icons = computed(() => {
 
   // Get all icon names under a category, then get their objects.
   // @todo This needs to be optimized...
-  iconNames.forEach((element) =>
+  iconNames.forEach((iconName) =>
     iconObjects.icons.push(
       iconsData.icons.filter(function (icon) {
-        return icon.name.includes(element);
+        return icon.name == iconName;
       })
     )
   );
 
   iconArray = iconObjects.icons.flat();
-  iconArray.forEach((item) => {
-    iconSet.add(item);
+  iconArray.forEach((icon) => {
+    iconSet.add(icon);
   });
 
   iconsFiltered = [...iconSet];
