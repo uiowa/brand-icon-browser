@@ -1,6 +1,5 @@
 <template>
 
-
 <svg class="variant">
     <use :xlink:href="'/sprite.svg#' + icon + '-' + variant"></use>
 </svg>

@@ -22,6 +22,7 @@
             </svg>
           </a>
         </div>
+        <p class="feedback"><a href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback">Submit feedback</a></p>
       </div>
     </aside>
 
@@ -38,7 +39,11 @@
         />
       </div>
 
-      <router-view @openModal="openModal" :currentVariant="currentVariant" />
+      <router-view
+        @openModal="openModal"
+        @setCurrentSearchTerm="setCurrentSearchTerm"
+        :currentVariant="currentVariant"
+      />
     </main>
   </div>
 
@@ -66,6 +71,11 @@ body {
   background-color: #f5f5f5;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+
+  &.modal-open {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 a {
@@ -82,16 +92,19 @@ a {
 }
 
 .toolbar {
-  padding: 15px 0;
+  padding: 10px 0;
   background-color: #f5f5f5de;
   backdrop-filter: blur(5px);
-  display: flex;
-  justify-content: start;
-  align-items: center;
+
+  @media only screen and (min-width: 760px) {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
 }
 
 .sticky {
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 760px) {
     position: sticky;
     top: 0;
   }
@@ -196,6 +209,11 @@ main {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
+.feedback{
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 14px;
+}
 </style>
 <script setup>
 import { ref, computed, onUpdated } from "vue";
@@ -236,6 +254,7 @@ function setCurrentSearchTerm(term) {
 
 function openModal(icon) {
   showModal.value = true;
+  document.body.classList.add("modal-open");
   iconDetails.value = icon;
 }
 
@@ -253,6 +272,7 @@ function toggleVariantColor() {
 
 function closeModal() {
   router.push({ hash: "" });
+  document.body.classList.remove("modal-open");
   showModal.value = false;
 }
 </script>
