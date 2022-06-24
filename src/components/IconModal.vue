@@ -45,6 +45,7 @@
                     :icon="icon.name"
                     :variant="value.variant"
                     @click="changeSelectedVariant(value.variant)"
+
                   />
                 </div>
               </div>
@@ -253,20 +254,11 @@ function closeModal() {
 
   &__actions {
     align-self: end;
-    text-align: left;
+    text-align: right;
     margin-bottom: 10px;
     margin-top: 0;
     svg {
       width: 15px;
-      cursor: pointer;
-    }
-    button {
-      color: #333;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      text-decoration: none;
-      background: white;
       cursor: pointer;
     }
   }
