@@ -8,8 +8,10 @@
       :to="{ hash: '#' + icon.name }"
       @click="openModal(icon)"
     >
-      <Icon :icon="icon.name" :variant="variant" />
-      <span class="icon-list__label">{{ icon.name }}</span>
+      <div class="icon-list__button-inner">
+        <Icon :icon="icon.name" :variant="variant" />
+        <span class="icon-list__label">{{ icon.name }}</span>
+      </div>
     </router-link>
   </div>
   <div class="content text-center" v-if="icons.length == 0">
@@ -56,17 +58,14 @@ function openModal(icon) {
   }
   &__button {
     background: #fff;
-    padding-top: 30px;
-    padding-bottom: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    
     display: block;
     text-decoration: none;
     border: 1px solid #ccc;
     cursor: pointer;
 
     img {
-      height: 80px;
+      padding: 10px;
       margin: 0 auto;
       display: block;
     }
@@ -76,12 +75,18 @@ function openModal(icon) {
     }
   }
 
+
+  &__button-inner{
+    padding: 20px;
+  }
+
   &__label {
     font-size: 0.8rem;
     text-align: center;
     line-height: 1;
     display: block;
-    padding: 15px 0;
+    padding-top: 5px;
+    padding-bottom: 15px;
   }
 }
 </style>
