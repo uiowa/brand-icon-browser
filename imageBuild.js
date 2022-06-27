@@ -221,18 +221,29 @@ async function createVariant(icon, variant) {
       contentType: "application/xml",
     });
 
-    let paths = dom.window.document.getElementsByTagName("path");
+    dom = svgColorifyShape(dom, "path", colorHex);
+    dom = svgColorifyShape(dom, "polygon", colorHex);
+    dom = svgColorifyShape(dom, "circle", colorHex);
+    dom = svgColorifyShape(dom, "ellipse", colorHex);
+    dom = svgColorifyShape(dom, "line", colorHex);
+    dom = svgColorifyShape(dom, "rect", colorHex);
 
-    for (let i = 0; i < paths.length; i++) {
-      //Only change fill colors if the fill in the original SVG is "none"
-      if (paths[i].getAttribute("fill") != "none") {
+    fs.writeFileSync(destFile, xmlDeclaration + dom.serialize());
+  }
+
+  function svgColorifyShape(dom, shape, colorHex) {
+    let shapes = dom.window.document.getElementsByTagName(shape);
+
+    for (let i = 0; i < shapes.length; i++) {
+      // Only change fill colors if the fill in the original SVG isn't "none"
+      if (shapes[i].getAttribute("fill") != "none") {
         dom.window.document
-          .getElementsByTagName("path")
+          .getElementsByTagName(shape)
           [i].setAttribute("fill", colorHex);
       }
     }
 
-    fs.writeFileSync(destFile, xmlDeclaration + dom.serialize());
+    return dom;
   }
 
   async function createPaddedVariant(
