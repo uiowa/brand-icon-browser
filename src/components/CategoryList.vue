@@ -6,6 +6,7 @@
           :to="{ name: 'Home' }"
           class="category-list-item__link"
           active-class="category-list-item__link--active"
+          @click="scrollToTop"
         >
           <Icon
             icon="open-book"
@@ -26,6 +27,7 @@
           :icon="category.icon"
           :category="category"
           :count="category.icons.length"
+          @click="scrollToTop"
         />
       </li>
     </ul>
@@ -46,6 +48,14 @@ const props = defineProps({
 const emit = defineEmits(["clearCurrentCategory"]);
 const categories = catData.categories;
 const icons = iconsData.icons;
+
+function scrollToTop() {
+  var element = document.querySelector(".iowa-bar");
+  element.scrollIntoView({
+    block: "start",
+    inline: "nearest",
+  });
+}
 </script>
 
 <style lang="scss">
