@@ -5,7 +5,8 @@ const destFolder = "public/brand-icons/";
 const iconsData = JSON.parse(
   fs.readFileSync("node_modules/uiowa-brand-icons/icons.json", "utf-8")
 );
-
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 main();
 
 async function main() {
@@ -53,62 +54,16 @@ async function createVariant(icon, variant) {
         originalImagePath = srcFolder + icon + ".svg";
 
         // one-color-black.svg (no manipulation, just copies svg from node_modules)
-        fs.copyFile(
+        fs.copyFileSync(
           originalImagePath,
-          destFolder + icon + "-" + variant + "-black.svg",
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
+          destFolder + icon + "-" + variant + "-black.svg"
         );
 
         // one-color-gold.svg (copies from original one color svg from node_modules, modifies it)
-        fs.copyFile(
-          originalImagePath,
-          destFolder + icon + "-" + variant + "-gold.svg",
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
-        );
+        createSvgFill(originalImagePath, "gold", "#FFCD00");
 
-        let oneColorGoldVariantData = fs.readFileSync(
-          destFolder + icon + "-" + variant + "-gold.svg",
-          "utf8",
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
-        );
-
-        oneColorGoldVariantData = oneColorGoldVariantData.replace(
-          "<path ",
-          '<path fill="#FFCD00" '
-        );
-
-        fs.writeFile(
-          destFolder + icon + "-" + variant + "-gold.svg",
-          oneColorGoldVariantData,
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
-        );
-
-        // one-color-white.svg (copies from one svg from node_modules, modifies it)
-        fs.copyFile(
-          originalImagePath,
-          destFolder + icon + "-" + variant + "-white.svg",
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
-        );
+        // one-color-white.svg (copies from original one color svg from node_modules, modifies it)
+        createSvgFill(originalImagePath, "white", "#FFFFFF");
 
         // one-color-black.png
         await sharp(originalImagePath)
@@ -253,6 +208,31 @@ async function createVariant(icon, variant) {
     }
   } catch (error) {
     console.log(error);
+  }
+
+  function createSvgFill(originalImagePath, colorName, colorHex) {
+    destFile = destFolder + icon + "-one-color-" + colorName + ".svg";
+
+    fs.copyFileSync(originalImagePath, destFile);
+
+    let oneColorGoldVariantData = fs.readFileSync(destFile, "utf8");
+    let oneColorGoldVariantDom = new JSDOM(oneColorGoldVariantData, {
+      contentType: "application/xml",
+    });
+    // regular for loop
+    for (
+      let i = 0;
+      i <
+      oneColorGoldVariantDom.window.document.getElementsByTagName("path")
+        .length;
+      i++
+    ) {
+      oneColorGoldVariantDom.window.document
+        .getElementsByTagName("path")
+        [i].setAttribute("fill", colorHex);
+    }
+
+    fs.writeFileSync(destFile, oneColorGoldVariantDom.serialize());
   }
 
   async function createPaddedVariant(
