@@ -29,8 +29,8 @@ async function main() {
   // -------------------- //
 
   // If you want, you can loop through the first item for testing purposes:
-  //   iconsData.icons.slice(0, 1).forEach((icon) => {
-  iconsData.icons.forEach((icon) => {
+  iconsData.icons.slice(0, 1).forEach((icon) => {
+    // iconsData.icons.forEach((icon) => {
     createVariant(icon.name, "one-color");
     createVariant(icon.name, "two-color");
   });
@@ -63,17 +63,66 @@ async function createVariant(icon, variant) {
           }
         );
 
+        // one-color-gold.svg (copies from original one color svg from node_modules, modifies it)
+        fs.copyFile(
+          originalImagePath,
+          destFolder + icon + "-" + variant + "-gold.svg",
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
+
+        let oneColorGoldVariantData = fs.readFileSync(
+          destFolder + icon + "-" + variant + "-gold.svg",
+          "utf8",
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
+
+        oneColorGoldVariantData = oneColorGoldVariantData.replace(
+          "<path ",
+          '<path fill="#FFCD00" '
+        );
+
+        fs.writeFile(
+          destFolder + icon + "-" + variant + "-gold.svg",
+          oneColorGoldVariantData,
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
+
+        // one-color-white.svg (copies from one svg from node_modules, modifies it)
+        fs.copyFile(
+          originalImagePath,
+          destFolder + icon + "-" + variant + "-white.svg",
+          (err) => {
+            if (err) {
+              console.log("Error Found:", err);
+            }
+          }
+        );
+
         // one-color-black.png
         await sharp(originalImagePath)
           .resize({ width: 751, height: 751 })
           .png({ colors: 16 })
           .toFile(destFolder + icon + "-" + variant + "-black.png");
+
         // one-color-white.png
         await sharp(originalImagePath)
           .modulate({ lightness: 100 })
           .resize({ width: 751, height: 751 })
           .png({ colors: 16 })
           .toFile(destFolder + icon + "-" + variant + "-white.png");
+
         // one-color-gold.png (dependent on one-color-black.png)
         await sharp({
           create: {
