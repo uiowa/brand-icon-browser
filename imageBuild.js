@@ -30,8 +30,8 @@ async function main() {
   // -------------------- //
 
   // If you want, you can loop through the first item for testing purposes:
-  iconsData.icons.slice(0, 1).forEach((icon) => {
-    // iconsData.icons.forEach((icon) => {
+  // iconsData.icons.slice(0, 10).forEach((icon) => {
+  iconsData.icons.forEach((icon) => {
     createVariant(icon.name, "one-color");
     createVariant(icon.name, "two-color");
   });
@@ -211,28 +211,28 @@ async function createVariant(icon, variant) {
   }
 
   function createSvgFill(originalImagePath, colorName, colorHex) {
-    destFile = destFolder + icon + "-one-color-" + colorName + ".svg";
+    const xmlDeclaration = '<?xml version="1.0" encoding="UTF-8"?>';
+    const destFile = destFolder + icon + "-one-color-" + colorName + ".svg";
 
     fs.copyFileSync(originalImagePath, destFile);
 
-    let oneColorGoldVariantData = fs.readFileSync(destFile, "utf8");
-    let oneColorGoldVariantDom = new JSDOM(oneColorGoldVariantData, {
+    let domData = fs.readFileSync(destFile, "utf8");
+    let dom = new JSDOM(domData, {
       contentType: "application/xml",
     });
-    // regular for loop
-    for (
-      let i = 0;
-      i <
-      oneColorGoldVariantDom.window.document.getElementsByTagName("path")
-        .length;
-      i++
-    ) {
-      oneColorGoldVariantDom.window.document
-        .getElementsByTagName("path")
-        [i].setAttribute("fill", colorHex);
+
+    let paths = dom.window.document.getElementsByTagName("path");
+
+    for (let i = 0; i < paths.length; i++) {
+      //Only change fill colors if the fill in the original SVG is "none"
+      if (paths[i].getAttribute("fill") != "none") {
+        dom.window.document
+          .getElementsByTagName("path")
+          [i].setAttribute("fill", colorHex);
+      }
     }
 
-    fs.writeFileSync(destFile, oneColorGoldVariantDom.serialize());
+    fs.writeFileSync(destFile, xmlDeclaration + dom.serialize());
   }
 
   async function createPaddedVariant(
