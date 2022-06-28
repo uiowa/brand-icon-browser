@@ -213,27 +213,34 @@ async function createVariant(icon, variant) {
   function createSvgFill(originalImagePath, colorName, colorHex) {
     const xmlDeclaration = '<?xml version="1.0" encoding="UTF-8"?>';
     const destFile = destFolder + icon + "-one-color-" + colorName + ".svg";
-
+    const shapes = [
+      "path",
+      "polygon",
+      "polyline",
+      "circle",
+      "ellipse",
+      "line",
+      "rect",
+    ];
+    // Copy original SVG file to a new variant SVG file
     fs.copyFileSync(originalImagePath, destFile);
 
+    // Read the "DOM" of the SVG file
     let domData = fs.readFileSync(destFile, "utf8");
     let dom = new JSDOM(domData, {
       contentType: "application/xml",
     });
 
-    dom = svgColorifyShape(dom, "path", colorHex);
-    dom = svgColorifyShape(dom, "polygon", colorHex);
-    dom = svgColorifyShape(dom, "circle", colorHex);
-    dom = svgColorifyShape(dom, "ellipse", colorHex);
-    dom = svgColorifyShape(dom, "line", colorHex);
-    dom = svgColorifyShape(dom, "rect", colorHex);
+    // Change each shape to have fill="gold" when appropriate (see svgColorifyShape())
+    shapes.forEach((shape) => {
+      dom = svgColorifyShape(dom, shape, colorHex);
+    });
 
     fs.writeFileSync(destFile, xmlDeclaration + dom.serialize());
   }
 
   function svgColorifyShape(dom, shape, colorHex) {
     let shapes = dom.window.document.getElementsByTagName(shape);
-
     for (let i = 0; i < shapes.length; i++) {
       // Only change fill colors if the fill in the original SVG isn't "none"
       if (shapes[i].getAttribute("fill") != "none") {
@@ -242,7 +249,6 @@ async function createVariant(icon, variant) {
           [i].setAttribute("fill", colorHex);
       }
     }
-
     return dom;
   }
 
