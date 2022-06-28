@@ -22,7 +22,12 @@
             </svg>
           </a>
         </div>
-        <p class="feedback"><a href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback">Submit feedback</a></p>
+        <p class="feedback">
+          <a
+            href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback"
+            >Submit feedback</a
+          >
+        </p>
       </div>
     </aside>
 
@@ -40,10 +45,15 @@
       </div>
 
       <router-view
+        v-slot="{ Component }"
         @openModal="openModal"
         @setCurrentSearchTerm="setCurrentSearchTerm"
         :currentVariant="currentVariant"
-      />
+      >
+        <suspense>
+          <component :is="Component" />
+        </suspense>
+      </router-view>
     </main>
   </div>
 
@@ -209,7 +219,7 @@ main {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
-.feedback{
+.feedback {
   text-align: center;
   margin-bottom: 0;
   font-size: 14px;
