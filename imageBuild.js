@@ -5,7 +5,8 @@ const destFolder = "public/brand-icons/";
 const iconsData = JSON.parse(
   fs.readFileSync("node_modules/uiowa-brand-icons/icons.json", "utf-8")
 );
-
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 main();
 
 async function main() {
@@ -29,7 +30,7 @@ async function main() {
   // -------------------- //
 
   // If you want, you can loop through the first item for testing purposes:
-  //   iconsData.icons.slice(0, 1).forEach((icon) => {
+  // iconsData.icons.slice(0, 10).forEach((icon) => {
   iconsData.icons.forEach((icon) => {
     createVariant(icon.name, "one-color");
     createVariant(icon.name, "two-color");
@@ -53,27 +54,30 @@ async function createVariant(icon, variant) {
         originalImagePath = srcFolder + icon + ".svg";
 
         // one-color-black.svg (no manipulation, just copies svg from node_modules)
-        fs.copyFile(
+        fs.copyFileSync(
           originalImagePath,
-          destFolder + icon + "-" + variant + "-black.svg",
-          (err) => {
-            if (err) {
-              console.log("Error Found:", err);
-            }
-          }
+          destFolder + icon + "-" + variant + "-black.svg"
         );
+
+        // one-color-gold.svg (copies from original one color svg from node_modules, modifies it)
+        createSvgFill(originalImagePath, "gold", "#FFCD00");
+
+        // one-color-white.svg (copies from original one color svg from node_modules, modifies it)
+        createSvgFill(originalImagePath, "white", "#FFFFFF");
 
         // one-color-black.png
         await sharp(originalImagePath)
           .resize({ width: 751, height: 751 })
           .png({ colors: 16 })
           .toFile(destFolder + icon + "-" + variant + "-black.png");
+
         // one-color-white.png
         await sharp(originalImagePath)
           .modulate({ lightness: 100 })
           .resize({ width: 751, height: 751 })
           .png({ colors: 16 })
           .toFile(destFolder + icon + "-" + variant + "-white.png");
+
         // one-color-gold.png (dependent on one-color-black.png)
         await sharp({
           create: {
@@ -204,6 +208,48 @@ async function createVariant(icon, variant) {
     }
   } catch (error) {
     console.log(error);
+  }
+
+  function createSvgFill(originalImagePath, colorName, colorHex) {
+    const xmlDeclaration = '<?xml version="1.0" encoding="UTF-8"?>';
+    const destFile = destFolder + icon + "-one-color-" + colorName + ".svg";
+    const shapes = [
+      "path",
+      "polygon",
+      "polyline",
+      "circle",
+      "ellipse",
+      "line",
+      "rect",
+    ];
+    // Copy original SVG file to a new variant SVG file
+    fs.copyFileSync(originalImagePath, destFile);
+
+    // Read the "DOM" of the SVG file
+    let domData = fs.readFileSync(destFile, "utf8");
+    let dom = new JSDOM(domData, {
+      contentType: "application/xml",
+    });
+
+    // Change each shape to have fill="gold" when appropriate (see svgColorifyShape())
+    shapes.forEach((shape) => {
+      dom = svgColorifyShape(dom, shape, colorHex);
+    });
+
+    fs.writeFileSync(destFile, xmlDeclaration + dom.serialize());
+  }
+
+  function svgColorifyShape(dom, shape, colorHex) {
+    let shapes = dom.window.document.getElementsByTagName(shape);
+    for (let i = 0; i < shapes.length; i++) {
+      // Only change fill colors if the fill in the original SVG isn't "none"
+      if (shapes[i].getAttribute("fill") != "none") {
+        dom.window.document
+          .getElementsByTagName(shape)
+          [i].setAttribute("fill", colorHex);
+      }
+    }
+    return dom;
   }
 
   async function createPaddedVariant(
