@@ -82,7 +82,7 @@
               class="uids-button"
               download
               @click="
-                event('downloadIcon', [
+                event('download_icon', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
