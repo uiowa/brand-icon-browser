@@ -52,73 +52,65 @@
           </div>
         </div>
         <div class="modal__icon-preview-wrapper">
-          <div class="icon-preview__download">
-            <a
-              :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
-              class="uids-button"
-              download
-            >
-              <div class="uids-button__inner">
-                <span>SVG</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                  <path
-                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-                  />
-                </svg>
+          <div class="format-downloads">
+            <div class="format-downloads__select-container">
+              <div class="format-downloads__select">
+                <label for="format" class="modal__download-label"
+                  >Download format</label
+                >
+                <select name="format" id="format">
+                  <option value="svg">Vector (SVG)</option>
+                  <option value="png">Transparent PNG</option>
+                </select>
               </div>
-            </a>
-            <a
-              :href="
-                getIconSrc(icon.name, selectedVariant, 'png', 'square').value
-              "
-              class="uids-button"
-              download
-            >
-              <div class="uids-button__inner">
-                <span>PNG (1:1)</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                  <path
-                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-                  />
-                </svg>
+              <div class="format-downloads__select">
+                <label for="size" class="modal__download-label">Size</label>
+                <select name="size" id="size">
+                  <option value="wide-padded">Wide with padding (16:9)</option>
+                  <option value="square-padded">
+                    Square with padding (1:1)
+                  </option>
+                </select>
               </div>
-            </a>
-            <a
-              :href="
-                getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
-              "
-              class="uids-button"
-              download
-            >
-              <div class="uids-button__inner">
-                <span>PNG (16:9)</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                  <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                  <path
-                    d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
-                  />
-                </svg>
+              <div class="format-downloads__download">
+                <a href="#" class="uids-button" download=""
+                  ><div class="uids-button__inner">
+                    <span>Download</span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 512"
+                    >
+                      <path
+                        d="M144 480C64.47 480 0 415.5 0 336C0 273.2 40.17 219.8 96.2 200.1C96.07 197.4 96 194.7 96 192C96 103.6 167.6 32 256 32C315.3 32 367 64.25 394.7 112.2C409.9 101.1 428.3 96 448 96C501 96 544 138.1 544 192C544 204.2 541.7 215.8 537.6 226.6C596 238.4 640 290.1 640 352C640 422.7 582.7 480 512 480H144zM303 392.1C312.4 402.3 327.6 402.3 336.1 392.1L416.1 312.1C426.3 303.6 426.3 288.4 416.1 279C407.6 269.7 392.4 269.7 383 279L344 318.1V184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184V318.1L256.1 279C247.6 269.7 232.4 269.7 223 279C213.7 288.4 213.7 303.6 223 312.1L303 392.1z"
+                      ></path>
+                    </svg></div
+                ></a>
               </div>
-            </a>
+            </div>
+            <div>
+              <p class="format-downloads__instructions">
+                <a href="#">Which format(s) should I be using?</a>
+              </p>
+            </div>
           </div>
         </div>
-        <div class="tags">
-          <span
-            v-for="term in icon.keywords"
-            :key="term.id"
-            @click="closeModal()"
-          >
-            <router-link
-              class="uids-tag"
-              :to="{
-                name: 'Search',
-                params: { term: term },
-              }"
-              >#{{ term }}</router-link
+        <div class="modal__icon-preview-wrapper">
+          <div class="tags">
+            <span
+              v-for="term in icon.keywords"
+              :key="term.id"
+              @click="closeModal()"
             >
-          </span>
+              <router-link
+                class="uids-tag"
+                :to="{
+                  name: 'Search',
+                  params: { term: term },
+                }"
+                >#{{ term }}</router-link
+              >
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -193,6 +185,11 @@ function closeModal() {
   &__body {
     max-height: calc(100vh - 200px);
     overflow-y: auto;
+  }
+
+  &__download-label {
+    display: block;
+    font-weight: bold;
   }
 
   @media only screen and (min-width: 768px) {
@@ -305,13 +302,36 @@ function closeModal() {
     background: white;
     border-color: #ffcd00;
   }
-  &__download {
-    margin-top: 20px;
-    text-align: center;
-    .uids-button {
-      margin-right: 5px;
-      margin-bottom: 5px;
+}
+
+.format-downloads {
+  &__select-container {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-gap: 10px;
+    select {
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
     }
+  }
+
+  &__select {
+  }
+
+  &__download {
+    align-self: end;
+  }
+
+  &__instructions {
+    font-size: 13px;
+  }
+
+  &__heading {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 13px;
   }
 }
 
