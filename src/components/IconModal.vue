@@ -57,6 +57,13 @@
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               class="uids-button"
               download
+              @click="
+                event('downloadIcon', [
+                  { icon: icon.name },
+                  { variant: selectedVariant },
+                  { format: 'svg' },
+                ])
+              "
             >
               <div class="uids-button__inner">
                 <span>SVG</span>
@@ -74,6 +81,14 @@
               "
               class="uids-button"
               download
+              @click="
+                event('downloadIcon', [
+                  { icon: icon.name },
+                  { variant: selectedVariant },
+                  { format: 'png' },
+                  { size: 'square' },
+                ])
+              "
             >
               <div class="uids-button__inner">
                 <span>PNG (1:1)</span>
@@ -91,6 +106,14 @@
               "
               class="uids-button"
               download
+              @click="
+                event('downloadIcon', [
+                  { icon: icon.name },
+                  { variant: selectedVariant },
+                  { format: 'png' },
+                  { size: 'wide' },
+                ])
+              "
             >
               <div class="uids-button__inner">
                 <span>PNG (16:9)</span>
@@ -131,6 +154,7 @@ import Icon from "@/components/Icon.vue";
 import UidsButton from "@/components/UidsButton.vue";
 import UidsTag from "@/components/UidsTag.vue";
 import getIconSrc from "../composables/getIconSrc.js";
+import { event } from "vue-gtag";
 
 const props = defineProps({
   icon: Object,

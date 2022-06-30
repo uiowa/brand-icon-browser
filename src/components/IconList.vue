@@ -29,6 +29,7 @@
 import { ref, defineProps } from "vue";
 import Icon from "@/components/Icon.vue";
 import IconModal from "@/components/IconModal.vue";
+import { event } from "vue-gtag";
 
 const props = defineProps({
   icons: Object,
@@ -38,6 +39,7 @@ const props = defineProps({
 const emit = defineEmits(["openModal"]);
 
 function openModal(icon) {
+  event("iconSelected", { icon: icon.name });
   emit("openModal", icon);
 }
 </script>
@@ -58,7 +60,7 @@ function openModal(icon) {
   }
   &__button {
     background: #fff;
-    
+
     display: block;
     text-decoration: none;
     border: 1px solid #ccc;
@@ -75,8 +77,7 @@ function openModal(icon) {
     }
   }
 
-
-  &__button-inner{
+  &__button-inner {
     padding: 20px;
   }
 

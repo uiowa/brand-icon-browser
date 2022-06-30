@@ -35,6 +35,7 @@
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import UidsButton from "@/components/UidsButton.vue";
+import { event } from "vue-gtag";
 const router = useRouter();
 const route = useRoute();
 const props = defineProps({
@@ -44,6 +45,7 @@ const emit = defineEmits(["setCurrentSearchTerm"]);
 
 function handleSearch(term) {
   if (term) {
+    event("search", { term: term });
     setCurrentSearchTerm(term);
     router.push({
       name: "Search",
