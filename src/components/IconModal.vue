@@ -58,7 +58,7 @@
               class="uids-button"
               download
               @click="
-                event('icon_downloaded', [
+                gtag('event', 'icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'svg' },
@@ -82,7 +82,7 @@
               class="uids-button"
               download
               @click="
-                event('icon_downloaded', [
+                gtag('event', 'icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
@@ -107,7 +107,7 @@
               class="uids-button"
               download
               @click="
-                event('icon_downloaded', [
+                gtag('event', 'icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
@@ -139,7 +139,7 @@
                 name: 'Search',
                 params: { term: term },
               }"
-              @click="event('search', [{ search_term: term }])"
+              @click="gtag('event', 'search', [{ search_term: term }])"
               >#{{ term }}</router-link
             >
           </span>
@@ -155,7 +155,6 @@ import Icon from "@/components/Icon.vue";
 import UidsButton from "@/components/UidsButton.vue";
 import UidsTag from "@/components/UidsTag.vue";
 import getIconSrc from "../composables/getIconSrc.js";
-import { event } from "vue-gtag";
 
 const props = defineProps({
   icon: Object,

@@ -9,7 +9,6 @@ import { ref, computed, onUpdated } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import catData from "/node_modules/uiowa-brand-icons/categories.json";
 import iconsData from "/node_modules/uiowa-brand-icons/icons.json";
-import { event } from "vue-gtag";
 
 const search = ref("");
 const route = useRoute();
@@ -76,7 +75,7 @@ function searchData(term) {
   let iconsFiltered = [...resultsSet];
 
   if (iconsFiltered.length == 0) {
-    event("search_no_results", { search_term: term });
+    gtag("event", "search_no_results", { search_term: term });
   }
   return iconsFiltered;
 }

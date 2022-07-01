@@ -29,7 +29,6 @@
 import { ref, defineProps } from "vue";
 import Icon from "@/components/Icon.vue";
 import IconModal from "@/components/IconModal.vue";
-import { event } from "vue-gtag";
 
 const props = defineProps({
   icons: Object,
@@ -39,7 +38,7 @@ const props = defineProps({
 const emit = defineEmits(["openModal"]);
 
 function openModal(icon) {
-  event("icon_selected", { icon: icon.name });
+  gtag("event", "icon_selected", { icon: icon.name });
   emit("openModal", icon);
 }
 </script>

@@ -22,7 +22,16 @@
             </svg>
           </a>
         </div>
-        <p class="feedback"><a href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback">Submit feedback</a></p>
+        <p class="feedback">
+          <a
+            href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback"
+            >Submit Feedback</a
+          >
+          <a href="https://uiowa.edu/privacy">Privacy Notice</a>
+        </p>
+      </div>
+      <div class="privacy-container">
+        <p></p>
       </div>
     </aside>
 
@@ -209,10 +218,27 @@ main {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
-.feedback{
+.feedback {
   text-align: center;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
+  a {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    &:not(:last-child) {
+      padding-left: 0;
+      border-right: 1px solid #000;
+    }
+  }
+}
+
+.privacy-container {
+  position: sticky;
+  position: -webkit-sticky;
+  bottom: 0;
+  text-align: center;
+  font-size: 12px;
 }
 </style>
 <script setup>
