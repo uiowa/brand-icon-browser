@@ -59,7 +59,7 @@
               download
               @click="
                 gtag('event', 'icon_downloaded', [
-                  { icon: icon.name },
+                  { icon_name: icon.name },
                   { variant: selectedVariant },
                   { format: 'svg' },
                 ])
@@ -83,7 +83,7 @@
               download
               @click="
                 gtag('event', 'icon_downloaded', [
-                  { icon: icon.name },
+                  { icon_name: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
                   { size: 'square' },
@@ -108,10 +108,10 @@
               download
               @click="
                 gtag('event', 'icon_downloaded', [
-                  { icon: icon.name },
-                  { variant: selectedVariant },
-                  { format: 'png' },
-                  { size: 'wide' },
+                  { icon_name: icon.name },
+                  { icon_variant: selectedVariant },
+                  { icon_format: 'png' },
+                  { icon_size: 'wide' },
                 ])
               "
             >
