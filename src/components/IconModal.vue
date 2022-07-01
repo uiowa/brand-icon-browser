@@ -58,7 +58,7 @@
               class="uids-button"
               download
               @click="
-                event('downloadIcon', [
+                event('icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'svg' },
@@ -82,7 +82,7 @@
               class="uids-button"
               download
               @click="
-                event('download_icon', [
+                event('icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
@@ -107,7 +107,7 @@
               class="uids-button"
               download
               @click="
-                event('downloadIcon', [
+                event('icon_downloaded', [
                   { icon: icon.name },
                   { variant: selectedVariant },
                   { format: 'png' },
@@ -139,6 +139,7 @@
                 name: 'Search',
                 params: { term: term },
               }"
+              @click="event('search', [{ search_term: term }])"
               >#{{ term }}</router-link
             >
           </span>
