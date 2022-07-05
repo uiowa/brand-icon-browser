@@ -16,6 +16,7 @@
             class="download-button"
             :arrow="false"
             :outline="true"
+            :full="true"
             download
             >Download all
             <i class="fas fa-download"></i>
@@ -142,11 +143,11 @@ a {
 .download-section {
   margin-top: 20px;
 }
-.bttn.download-button {
-  display: block;
-  border-color: #ccc;
-  background: white;
-}
+// .bttn.download-button {
+//   display: block;
+//   border-color: #ccc;
+//   background: white;
+// }
 aside {
   grid-column: 1 / 13;
 

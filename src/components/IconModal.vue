@@ -55,34 +55,35 @@
           <div class="icon-preview__download">
             <uids-button
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
-              v-if="getVariantFormat(selectedVariant, 'svg')"
+              download
               color="tertiary"
               :arrow="false"
               :outline="true"
-            >SVG
-            <i class="fas fa-download"></i>
+              >SVG
+              <i class="fas fa-download"></i>
             </uids-button>
             <uids-button
-              :href="getIconSrc(icon.name, selectedVariant, 'png', 'square').value"
-              v-if="getVariantFormat(selectedVariant, 'png')"
+              :href="
+                getIconSrc(icon.name, selectedVariant, 'png', 'square').value
+              "
               download
               color="tertiary"
               :arrow="false"
               :outline="true"
             >
-              PNG (1:1)
+              Square (PNG)
               <i class="fas fa-download"></i>
             </uids-button>
             <uids-button
               :href="
                 getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
               "
-              class="uids-button"
               download
+              class="uids-button"
               color="tertiary"
               :outline="true"
             >
-             PNG (16:9)
+              Wide (PNG)
               <i class="fas fa-download"></i>
             </uids-button>
           </div>
@@ -293,11 +294,10 @@ function closeModal() {
   &__download {
     margin-top: 20px;
     text-align: center;
-  
+
     .bttn {
       margin-right: 5px;
       margin-bottom: 5px;
-      border-color: #ccc;
     }
   }
 }
