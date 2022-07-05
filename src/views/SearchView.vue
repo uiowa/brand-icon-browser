@@ -73,6 +73,10 @@ function searchData(term) {
   });
 
   let iconsFiltered = [...resultsSet];
+
+  if (iconsFiltered.length == 0) {
+    gtag("event", "search_no_results", { search_term: term });
+  }
   return iconsFiltered;
 }
 </script>

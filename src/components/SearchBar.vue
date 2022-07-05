@@ -44,6 +44,7 @@ const emit = defineEmits(["setCurrentSearchTerm"]);
 
 function handleSearch(term) {
   if (term) {
+    gtag("event", "search", { search_term: term });
     setCurrentSearchTerm(term);
     router.push({
       name: "Search",
