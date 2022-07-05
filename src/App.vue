@@ -13,7 +13,7 @@
           <uids-button
             href="https://github.com/uiowa/brand-icons/archive/refs/heads/main.zip"
             color="tertiary"
-            class="download-button"
+            size="small"
             :full="true"
             download
             >Download all
@@ -141,11 +141,7 @@ a {
 .download-section {
   margin-top: 20px;
 }
-// .bttn.download-button {
-//   display: block;
-//   border-color: #ccc;
-//   background: white;
-// }
+
 aside {
   grid-column: 1 / 13;
 
