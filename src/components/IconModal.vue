@@ -116,6 +116,7 @@
                 name: 'Search',
                 params: { term: term },
               }"
+              @click="gtag('event', 'search', [{ search_term: term }])"
               >#{{ term }}</router-link
             >
           </span>
@@ -159,6 +160,7 @@ function changeSelectedVariant(variant) {
   }
   selectedVariant.value = variant;
 }
+
 // Necessary to map which formats go with variants
 // since we don't provide all formats for all variants.
 const variants = [
