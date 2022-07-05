@@ -15,7 +15,7 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-JPCWR6L7FQ');
+      gtag('config', '<%= process.env.VUE_APP_ANALYTICS_CODE %>');
     </script>
     <% } else { %>
     <script>

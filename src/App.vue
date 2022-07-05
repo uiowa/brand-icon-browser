@@ -30,9 +30,6 @@
           <a href="https://uiowa.edu/privacy">Privacy Notice</a>
         </p>
       </div>
-      <div class="privacy-container">
-        <p></p>
-      </div>
     </aside>
 
     <main>
