@@ -14,8 +14,6 @@
             href="https://github.com/uiowa/brand-icons/archive/refs/heads/main.zip"
             color="tertiary"
             class="download-button"
-            :arrow="false"
-            :outline="true"
             :full="true"
             download
             >Download all

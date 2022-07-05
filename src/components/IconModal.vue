@@ -57,8 +57,6 @@
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               download
               color="tertiary"
-              :arrow="false"
-              :outline="true"
               >SVG
               <i class="fas fa-download"></i>
             </uids-button>
@@ -68,8 +66,6 @@
               "
               download
               color="tertiary"
-              :arrow="false"
-              :outline="true"
             >
               Square (PNG)
               <i class="fas fa-download"></i>
@@ -81,7 +77,6 @@
               download
               class="uids-button"
               color="tertiary"
-              :outline="true"
             >
               Wide (PNG)
               <i class="fas fa-download"></i>
