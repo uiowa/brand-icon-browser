@@ -172,7 +172,16 @@ router.beforeEach((to, from, next) => {
     // Add the meta tags to the document head.
     .forEach((tag) => document.head.appendChild(tag));
 
+  // Scroll to the top of the document after changing route
+  scrollToTop();
   next();
 });
 
+function scrollToTop() {
+  var element = document.querySelector(".iowa-bar");
+  element.scrollIntoView({
+    block: "start",
+    inline: "nearest",
+  });
+}
 export default router;
