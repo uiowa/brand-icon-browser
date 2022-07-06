@@ -30,7 +30,7 @@
               <p class="text-center">Select a variant:</p>
               <div class="modal__icon-variants-wrapper">
                 <div
-                  v-for="value in variantFormats"
+                  v-for="value in variants"
                   class="icon-preview icon-preview--small"
                   :class="[
                     {
@@ -45,7 +45,6 @@
                     :icon="icon.name"
                     :variant="value.variant"
                     @click="changeSelectedVariant(value.variant)"
-
                   />
                 </div>
               </div>
@@ -57,7 +56,7 @@
             <a
               :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'svg')"
+              download
             >
               <div class="uids-button__inner">
                 <span>SVG</span>
@@ -74,7 +73,6 @@
                 getIconSrc(icon.name, selectedVariant, 'png', 'square').value
               "
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'png')"
               download
             >
               <div class="uids-button__inner">
@@ -92,7 +90,6 @@
                 getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
               "
               class="uids-button"
-              v-if="getVariantFormat(selectedVariant, 'png')"
               download
             >
               <div class="uids-button__inner">
@@ -105,9 +102,7 @@
                 </svg>
               </div>
             </a>
-            
           </div>
-          
         </div>
         <div class="tags">
           <span
@@ -121,6 +116,7 @@
                 name: 'Search',
                 params: { term: term },
               }"
+              @click="gtag('event', 'search', [{ search_term: term }])"
               >#{{ term }}</router-link
             >
           </span>
@@ -155,36 +151,6 @@ document.addEventListener("keydown", function (event) {
     closeModal();
   }
 });
-// Necessary to map which formats go with variants
-// since we don't provide all formats for all variants.
-const variantFormats = [
-  {
-    variant: "one-color-black",
-    formats: ["svg", "png"],
-  },
-  {
-    variant: "two-color",
-    formats: ["svg", "png"],
-  },
-  {
-    variant: "one-color-gold",
-    formats: ["png"],
-  },
-  {
-    variant: "one-color-white",
-    formats: ["png"],
-  },
-];
-
-function getVariantFormat(variant, format) {
-  let findVariant = variantFormats.find((v) => v.variant == variant);
-  if (findVariant) {
-    if (findVariant.formats.find((f) => f == format)) {
-      return true;
-    }
-    return false;
-  }
-}
 
 function changeSelectedVariant(variant) {
   if (variant == "one-color-white") {
@@ -195,13 +161,29 @@ function changeSelectedVariant(variant) {
   selectedVariant.value = variant;
 }
 
+// Necessary to map which formats go with variants
+// since we don't provide all formats for all variants.
+const variants = [
+  {
+    variant: "one-color-black",
+  },
+  {
+    variant: "two-color",
+  },
+  {
+    variant: "one-color-gold",
+  },
+  {
+    variant: "one-color-white",
+  },
+];
+
 function closeModal() {
   emit("closeModal");
 }
 </script>
 
 <style lang="scss">
-
 .modal {
   width: 75%;
   padding: 30px;

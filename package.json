@@ -4,11 +4,13 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
+        "build-no-icons": "vue-cli-service build",
         "build": "node imageBuild.js && vue-cli-service build"
     },
     "dependencies": {
         "core-js": "^3.8.3",
         "fs": "0.0.1-security",
+        "jsdom": "^20.0.0",
         "sharp": "^0.30.5",
         "uids": "git+https://github.com/uiowa/uids.git#233d61a",
         "uiowa-brand-icons": "git+https://github.com/uiowa/brand-icons.git#f933b40",
