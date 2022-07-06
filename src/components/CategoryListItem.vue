@@ -70,6 +70,7 @@ function scrollToTop() {
   &__icon {
     display: block;
     align-self: center;
+    width: 30px;
     height: 30px;
     grid-column: span 1;
   }
