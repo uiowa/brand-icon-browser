@@ -1,6 +1,5 @@
 <template>
   <router-link
-    @click="scrollToTop"
     :to="{
       name: 'Category',
       params: { category: category.slug },
@@ -24,32 +23,6 @@ const props = defineProps({
   count: Number,
   category: Object,
 });
-
-// @todo: fix scrolling now that new search has been implemented:
-// observer.observe(document.querySelector("#search"));
-
-// var searchVisible = true;
-// var observer = new IntersectionObserver(
-//   function (entries) {
-//     if (entries[0].isIntersecting === true) {
-//       searchVisible = true;
-//     } else {
-//       searchVisible = false;
-//     }
-//   },
-//   { threshold: [1] }
-// );
-
-function scrollToTop() {
-  // if (!searchVisible) {
-  //   var element = document.getElementById("icon-list");
-  //   element.scrollIntoView({
-  //     behavior: "smooth",
-  //     block: "start",
-  //     inline: "nearest",
-  //   });
-  // }
-}
 </script>
 
 <style lang="scss">
@@ -70,6 +43,7 @@ function scrollToTop() {
   &__icon {
     display: block;
     align-self: center;
+    width: 30px;
     height: 30px;
     grid-column: span 1;
   }
