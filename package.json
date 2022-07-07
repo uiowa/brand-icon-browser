@@ -12,7 +12,7 @@
         "fs": "0.0.1-security",
         "jsdom": "^20.0.0",
         "sharp": "^0.30.5",
-        "uids": "git+https://github.com/uiowa/uids.git#2db0bbd",
+        "uids": "git+https://github.com/uiowa/uids.git#d9f64e5",
         "uiowa-brand-icons": "git+https://github.com/uiowa/brand-icons.git#f451312",
         "vue": "^3.2.13",
         "vue-router": "^4.0.3",
