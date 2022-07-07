@@ -34,7 +34,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import UidsButton from "@/components/UidsButton.vue";
+
 const router = useRouter();
 const route = useRoute();
 const props = defineProps({
