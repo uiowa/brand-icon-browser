@@ -172,8 +172,12 @@ router.beforeEach((to, from, next) => {
     // Add the meta tags to the document head.
     .forEach((tag) => document.head.appendChild(tag));
 
-  // Scroll to the top of the document after changing route
-  scrollToTop();
+  // Scroll to the top of the document after changing route only if it the route's to/from
+  // doesn't contain a hash. Prevents scrolling to top when opening or closing a modal.
+  if (!to.hash && !from.hash) {
+    scrollToTop();
+  }
+
   next();
 });
 
