@@ -191,6 +191,7 @@ main {
 }
 .feedback {
   text-align: center;
+  margin-top: 15px;
   margin-bottom: 0;
   font-size: 13px;
   a {
@@ -199,13 +200,13 @@ main {
     padding-right: 10px;
     &:not(:last-child) {
       padding-left: 0;
-      border-right: 1px solid #000;
+      border-right: 1px solid rgba(0, 0, 0, 0.425);
     }
   }
 }
 
 .copyright-container {
-  padding: 10px 0;
+  margin-top: 15px;
   text-align: center;
   font-size: 12px;
 }
