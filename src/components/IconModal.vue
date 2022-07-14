@@ -161,7 +161,7 @@ function changeSelectedVariant(variant) {
 }
 
 function trackDownload(icon, variant, format, size) {
-  gtag("event", "icon_downloaded", {
+  gtag("event", "icon_download", {
     icon_name: icon,
     icon_variant: variant,
     icon_format: format,
