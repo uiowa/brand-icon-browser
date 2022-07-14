@@ -53,36 +53,54 @@
         </div>
         <div class="modal__icon-preview-wrapper">
           <div class="icon-preview__download">
-            <uids-button
-              :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
-              download
-              color="tertiary"
-              size="small"
-              >SVG
-              <i class="fas fa-download"></i>
-            </uids-button>
-            <uids-button
-              :href="
-                getIconSrc(icon.name, selectedVariant, 'png', 'square').value
-              "
-              download
-              color="tertiary"
-              size="small"
+            <div
+              class="icon-preview__download-button-container"
+              @click="trackDownload(icon.name, selectedVariant, 'svg')"
             >
-              Square (PNG)
-              <i class="fas fa-download"></i>
-            </uids-button>
-            <uids-button
-              :href="
-                getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
+              <uids-button
+                :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
+                download
+                color="tertiary"
+                size="small"
+                >SVG
+                <i class="fas fa-download"></i>
+              </uids-button>
+            </div>
+
+            <div
+              class="icon-preview__download-button-container"
+              @click="
+                trackDownload(icon.name, selectedVariant, 'png', 'square')
               "
-              download
-              color="tertiary"
-              size="small"
             >
-              Wide (PNG)
-              <i class="fas fa-download"></i>
-            </uids-button>
+              <uids-button
+                :href="
+                  getIconSrc(icon.name, selectedVariant, 'png', 'square').value
+                "
+                download
+                color="tertiary"
+                size="small"
+              >
+                Square (PNG)
+                <i class="fas fa-download"></i>
+              </uids-button>
+            </div>
+            <div
+              class="icon-preview__download-button-container"
+              @click="trackDownload(icon.name, selectedVariant, 'png', 'wide')"
+            >
+              <uids-button
+                :href="
+                  getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
+                "
+                download
+                color="tertiary"
+                size="small"
+              >
+                Wide (PNG)
+                <i class="fas fa-download"></i>
+              </uids-button>
+            </div>
           </div>
         </div>
         <div class="tags">
@@ -140,6 +158,15 @@ function changeSelectedVariant(variant) {
     iconPreviewClass.value = "";
   }
   selectedVariant.value = variant;
+}
+
+function trackDownload(icon, variant, format, size) {
+  gtag("event", "icon_downloaded", {
+    icon_name: icon,
+    icon_variant: variant,
+    icon_format: format,
+    icon_size: size,
+  });
 }
 
 // Necessary to map which formats go with variants
@@ -296,6 +323,10 @@ function closeModal() {
       margin-right: 5px;
       margin-bottom: 5px;
     }
+  }
+
+  &__download-button-container {
+    display: inline-block;
   }
 }
 
