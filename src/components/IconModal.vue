@@ -55,49 +55,30 @@
           <div class="icon-preview__download">
             <div
               class="icon-preview__download-button-container"
-              @click="trackDownload(icon.name, selectedVariant, 'svg')"
-            >
-              <uids-button
-                :href="getIconSrc(icon.name, selectedVariant, 'svg').value"
-                download
-                color="tertiary"
-                size="small"
-                >SVG
-                <i class="fas fa-download"></i>
-              </uids-button>
-            </div>
-
-            <div
-              class="icon-preview__download-button-container"
+              v-for="downloadableFormat in downloadableFormats"
+              :key="downloadableFormat.id"
               @click="
-                trackDownload(icon.name, selectedVariant, 'png', 'square')
+                trackDownload(
+                  icon.name,
+                  selectedVariant,
+                  downloadableFormat.format,
+                  downloadableFormat.ratio
+                )
               "
             >
               <uids-button
                 :href="
-                  getIconSrc(icon.name, selectedVariant, 'png', 'square').value
+                  getIconSrc(
+                    icon.name,
+                    selectedVariant,
+                    downloadableFormat.format,
+                    downloadableFormat.ratio
+                  ).value
                 "
                 download
                 color="tertiary"
                 size="small"
-              >
-                Square (PNG)
-                <i class="fas fa-download"></i>
-              </uids-button>
-            </div>
-            <div
-              class="icon-preview__download-button-container"
-              @click="trackDownload(icon.name, selectedVariant, 'png', 'wide')"
-            >
-              <uids-button
-                :href="
-                  getIconSrc(icon.name, selectedVariant, 'png', 'wide').value
-                "
-                download
-                color="tertiary"
-                size="small"
-              >
-                Wide (PNG)
+                >{{ downloadableFormat.label }}
                 <i class="fas fa-download"></i>
               </uids-button>
             </div>
@@ -160,12 +141,13 @@ function changeSelectedVariant(variant) {
   selectedVariant.value = variant;
 }
 
-function trackDownload(icon, variant, format, size) {
+function trackDownload(icon, variant, format, ratio) {
+  console.log(icon + variant + format + ratio);
   gtag("event", "icon_download", {
     icon_name: icon,
     icon_variant: variant,
     icon_format: format,
-    icon_size: size,
+    icon_size: ratio,
   });
 }
 
@@ -183,6 +165,24 @@ const variants = [
   },
   {
     variant: "one-color-white",
+  },
+];
+
+const downloadableFormats = [
+  {
+    label: "SVG",
+    format: "svg",
+    ratio: null,
+  },
+  {
+    label: "Square (PNG)",
+    format: "png",
+    ratio: "square",
+  },
+  {
+    label: "Wide (PNG)",
+    format: "png",
+    ratio: "wide",
   },
 ];
 
