@@ -72,8 +72,7 @@ jobs:
       - name: Main branch preparations
         if: github.ref == format('refs/heads/{0}', env.MAIN_BRANCH)
         run: |
-          rm -rf $GITHUB_WORKSPACE/gh-pages/js
-          rm -rf $GITHUB_WORKSPACE/gh-pages/css
+          rm -rf $GITHUB_WORKSPACE/gh-pages/{css,js}
           npm run build --base=/
           cp -a $GITHUB_WORKSPACE/dist/* $GITHUB_WORKSPACE/gh-pages
 
