@@ -4,11 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto Condensed:regular,bold|Roboto:light,regular,bold,italic|Zilla Slab:regular,bold,italic|Antonio:light,regular,bold,italic" />
+
+    <meta name="title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="description" content="Our icon set consists of 400+ unique icons that are provided as SVG and PNG files. SVG files are for web purposes; for print projects, convert SVG files to EPS using Adobe Illustrator or cloud convert to ensure that icons print clearly at any size. PNG files should only be used for Microsoft Office products, such as PowerPoint.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://icons.brand.uiowa.edu">
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta property="og:description" content="Our icon set consists of 400+ unique icons that are provided as SVG and PNG files. SVG files are for web purposes; for print projects, convert SVG files to EPS using Adobe Illustrator or cloud convert to ensure that icons print clearly at any size. PNG files should only be used for Microsoft Office products, such as PowerPoint.">
+    <meta property="og:image" content="https://icons.brand.uiowa.edu/assets/images/meta-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://icons.brand.uiowa.edu">
+    <meta property="twitter:title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta property="twitter:description" content="Our icon set consists of 400+ unique icons that are provided as SVG and PNG files. SVG files are for web purposes; for print projects, convert SVG files to EPS using Adobe Illustrator or cloud convert to ensure that icons print clearly at any size. PNG files should only be used for Microsoft Office products, such as PowerPoint.">
+    <meta property="twitter:image" content="https://icons.brand.uiowa.edu/assets/images/meta-image.png">
+
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto Condensed:regular,bold|Roboto:light,regular,bold,italic|Zilla Slab:regular,bold,italic|Antonio:light,regular,bold,italic" />
     <% if (process.env.VUE_APP_ENABLE_ANALYTICS === 'true') { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%= process.env.VUE_APP_ANALYTICS_CODE %>"></script>
     <script>
