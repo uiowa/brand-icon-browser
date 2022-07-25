@@ -27,6 +27,9 @@
           >
           <a href="https://uiowa.edu/privacy">Privacy Notice</a>
         </p>
+        <p class="copyright-container">
+          &copy; {{ currentYear }} The University of Iowa
+        </p>
       </div>
     </aside>
 
@@ -188,6 +191,7 @@ main {
 }
 .feedback {
   text-align: center;
+  margin-top: 15px;
   margin-bottom: 0;
   font-size: 13px;
   a {
@@ -196,15 +200,13 @@ main {
     padding-right: 10px;
     &:not(:last-child) {
       padding-left: 0;
-      border-right: 1px solid #000;
+      border-right: 1px solid rgba(0, 0, 0, 0.425);
     }
   }
 }
 
-.privacy-container {
-  position: sticky;
-  position: -webkit-sticky;
-  bottom: 0;
+.copyright-container {
+  margin-top: 15px;
   text-align: center;
   font-size: 12px;
 }
@@ -227,6 +229,7 @@ const route = useRoute();
 const showModal = ref(false);
 const iconDetails = ref("");
 const currentSearchTerm = ref("");
+var currentYear = new Date().getFullYear();
 
 //If we have an icon in the current URL params, show the icon modal:
 if (window.location.hash) {
