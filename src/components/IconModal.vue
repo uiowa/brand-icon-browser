@@ -115,7 +115,7 @@
                 name: 'Search',
                 params: { term: term },
               }"
-              @click="gtag('event', 'search', [{ search_term: term }])"
+              @click="gtag('event', 'tag_click', [{ term: term }])"
               >#{{ term }}</router-link
             >
           </span>
