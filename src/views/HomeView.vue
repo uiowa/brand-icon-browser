@@ -17,7 +17,7 @@ const props = defineProps({
   currentVariant: String,
 });
 
-const icons = ref(iconsData.icons);
+const icons = ref(iconsData.icons.sort((a, b) => a.name.localeCompare(b.name)));
 
 function openModal(icon) {
   emit("openModal", icon);
