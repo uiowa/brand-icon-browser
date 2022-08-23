@@ -81,7 +81,7 @@
                 color="tertiary"
                 size="small"
               >
-                Square (PNG)
+                PNG (Square)
                 <i class="fas fa-download"></i>
               </uids-button>
             </div>
@@ -97,7 +97,7 @@
                 color="tertiary"
                 size="small"
               >
-                Wide (PNG)
+                PNG (Wide)
                 <i class="fas fa-download"></i>
               </uids-button>
             </div>
