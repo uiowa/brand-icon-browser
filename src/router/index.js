@@ -92,7 +92,7 @@ const router = createRouter({
 // This callback runs before every route change, including on page load.
 router.beforeEach((to, from, next) => {
   let generatedTitle = "";
-  let titleSuffix = "Brand Icon Browser - The University of Iowa";
+  let titleSuffix = "Icon Browser - The University of Iowa";
   let icon = null;
   let category = null;
   // This goes through the matched routes from last to first, finding the closest route with a title.
