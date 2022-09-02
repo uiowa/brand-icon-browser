@@ -73,6 +73,11 @@ function searchData(term) {
   });
 
   let iconsFiltered = [...resultsSet];
+  iconsFiltered.sort((a, b) => a.name.localeCompare(b.name));
+
+  if (iconsFiltered.length == 0) {
+    gtag("event", "search_no_results", { search_term: term });
+  }
   return iconsFiltered;
 }
 </script>

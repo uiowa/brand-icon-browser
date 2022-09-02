@@ -38,6 +38,7 @@ const props = defineProps({
 const emit = defineEmits(["openModal"]);
 
 function openModal(icon) {
+  gtag("event", "icon_selected", { icon_name: icon.name });
   emit("openModal", icon);
 }
 </script>
@@ -58,7 +59,7 @@ function openModal(icon) {
   }
   &__button {
     background: #fff;
-    
+
     display: block;
     text-decoration: none;
     border: 1px solid #ccc;
@@ -75,8 +76,7 @@ function openModal(icon) {
     }
   }
 
-
-  &__button-inner{
+  &__button-inner {
     padding: 20px;
   }
 
