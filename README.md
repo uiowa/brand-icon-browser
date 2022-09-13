@@ -13,8 +13,9 @@ Example:
 `"uiowa-brand-icons": "git+https://github.com/uiowa/brand-icons.git#6f5c33e"`
 
 4. Run `npm update uiowa-brand-icons`
-5. Create a PR to merge this branch into `main`
-6. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
+5. Test the icons you've added by running `npm run build` followed by `npm run serve` to ensure  the build succeeds and that the new icons are available on `localhost`.
+6. Create a PR to merge this branch into `main`
+7. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
 
 ## Setting up development environment
 
