@@ -42,6 +42,6 @@ npm run build-no-icons
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# Iowa Brand Icons
+# Brand Icons
 See https://brand.uiowa.edu/graphic-elements for more information. 
 
