@@ -1,17 +1,25 @@
-# Brand Icon Browser
+# Icon Browser
+https://icons.brand.uiowa.edu
 
-Demo: https://sandbox.imu.uiowa.edu/
 
-## Stuff that's not working quite yet:
-- "Recently added" category not automated
-    - `dateAdded` in `icons.json` isn't being used or isn't filled out at all
-- Not very mobile friendly yet
-- Implement UIDS 4 components properly
-- Refine tags a bit
-- Create build process for adding new icons
-- Bring back live search-as-you-type (abandoned for reasons)
+## Adding new icons to Icon Browser
 
-## Project setup
+1. Follow [the steps on the Brand Icons repository](https://github.com/uiowa/brand-icons/blob/main/README.md) for adding the correct icon image file variants and adding keywords to icons in the `uiowa-brand-icons` package.
+2. Check out a new branch. Example: `icons_dep_update_aug_22`
+3. Update the commit hash for the `uiowa-brand-icons` package in `package.json`'s `devDependencies`. 
+
+Example: 
+
+`"uiowa-brand-icons": "git+https://github.com/uiowa/brand-icons.git#6f5c33e"`
+
+4. Run `npm update uiowa-brand-icons`
+5. Test the icons you've added by running `npm run build` followed by `npm run serve` to ensure  the build succeeds and that the new icons are available on `localhost`.
+6. Create a PR to merge this branch into `main`
+7. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
+
+## Setting up development environment
+
+### Project setup
 ```
 npm install
 ```
@@ -26,25 +34,15 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### Compiles and minifies but skips generating the icon variants (for testing purposes)
 ```
-npm run lint
+npm run build-no-icons
 ```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# Iowa Brand Icons
+## Brand icon information
 See https://brand.uiowa.edu/graphic-elements for more information. 
 
-## One-color icon set
-
-![icons-outline_2](https://user-images.githubusercontent.com/1036433/159326925-7079bb62-8405-4eb2-8c73-b229ca3ed924.png)
-
-Available in black, gold, and reversed colors.
-
-## Two-color icon set
-
-![icons-outline –color_0](https://user-images.githubusercontent.com/1036433/159326947-a719cdde-55d4-4143-ad47-eca3736a1121.png)
-
-Available in black with gold accents.
