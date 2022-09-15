@@ -177,7 +177,7 @@ router.beforeEach((to, from, next) => {
   // If target route is a search or category, scroll the toolbar into view instead.
   // @todo: refactor this a bit.
   if (!to.hash && !from.hash) {
-    if (to.name == "Search" || to.name == "Category") {
+    if (to.name == "Search" || to.name == "Category" || to.name == "Home") {
       scrollToResults();
     } else {
       scrollToTop();
@@ -195,7 +195,7 @@ function scrollToTop() {
 }
 
 function scrollToResults() {
-  var element = document.querySelector(".toolbar");
+  var element = document.querySelector(".main-container");
   element.scrollIntoView({
     alignToTop: true,
     block: "start",
