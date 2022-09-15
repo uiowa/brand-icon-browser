@@ -174,16 +174,30 @@ router.beforeEach((to, from, next) => {
 
   // Scroll to the top of the document after changing route only if it the route's to/from
   // doesn't contain a hash. Prevents scrolling to top when opening or closing a modal.
+  // If target route is a search or category, scroll the toolbar into view instead.
+  // @todo: refactor this a bit.
   if (!to.hash && !from.hash) {
-    scrollToTop();
+    if (to.name == "Search" || to.name == "Category") {
+      scrollToResults();
+    } else {
+      scrollToTop();
+    }
   }
-
   next();
 });
 
 function scrollToTop() {
   var element = document.querySelector(".iowa-bar");
   element.scrollIntoView({
+    block: "start",
+    inline: "nearest",
+  });
+}
+
+function scrollToResults() {
+  var element = document.querySelector(".toolbar");
+  element.scrollIntoView({
+    alignToTop: true,
     block: "start",
     inline: "nearest",
   });
