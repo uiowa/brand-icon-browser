@@ -5,7 +5,7 @@
     </h1>
   </uids-brand-bar>
 
-  <div class="wrapper">
+  <div class="wrapper" id="main-wrapper">
     <aside>
       <div class="sticky">
         <CategoryList />
@@ -32,7 +32,7 @@
       </div>
     </aside>
 
-    <main>
+    <main class="main-container">
       <div class="toolbar sticky">
         <SearchBar
           id="search"
@@ -96,6 +96,12 @@ a {
   padding: 0 10px;
   grid-template-columns: repeat(12, 1fr);
   max-width: 1550px;
+}
+
+.main-container {
+  @media only screen and (min-width: 760px) {
+    scroll-margin-top: 80px;
+  }
 }
 
 .toolbar {
