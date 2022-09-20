@@ -92,7 +92,7 @@ const router = createRouter({
 // This callback runs before every route change, including on page load.
 router.beforeEach((to, from, next) => {
   let generatedTitle = "";
-  let titleSuffix = "Brand Icon Browser - The University of Iowa";
+  let titleSuffix = "Icon Browser - The University of Iowa";
   let icon = null;
   let category = null;
   // This goes through the matched routes from last to first, finding the closest route with a title.
@@ -174,16 +174,30 @@ router.beforeEach((to, from, next) => {
 
   // Scroll to the top of the document after changing route only if it the route's to/from
   // doesn't contain a hash. Prevents scrolling to top when opening or closing a modal.
+  // If target route is a search or category, scroll the toolbar into view instead.
+  // @todo: refactor this a bit.
   if (!to.hash && !from.hash) {
-    scrollToTop();
+    if (to.name == "Search" || to.name == "Category" || to.name == "Home") {
+      scrollToResults();
+    } else {
+      scrollToTop();
+    }
   }
-
   next();
 });
 
 function scrollToTop() {
   var element = document.querySelector(".iowa-bar");
   element.scrollIntoView({
+    block: "start",
+    inline: "nearest",
+  });
+}
+
+function scrollToResults() {
+  var element = document.querySelector(".main-container");
+  element.scrollIntoView({
+    alignToTop: true,
     block: "start",
     inline: "nearest",
   });

@@ -1,11 +1,11 @@
 <template>
   <uids-brand-bar height="narrow">
     <h1 class="site-name">
-      <router-link :to="{ name: 'Home' }">Brand Icon Browser</router-link>
+      <router-link :to="{ name: 'Home' }">Icon Browser</router-link>
     </h1>
   </uids-brand-bar>
 
-  <div class="wrapper">
+  <div class="wrapper" id="main-wrapper">
     <aside>
       <div class="sticky">
         <CategoryList />
@@ -21,8 +21,7 @@
           </uids-button>
         </div>
         <p class="feedback">
-          <a
-            href="mailto:osc-brand@uiowa.edu?subject=Brand Icon Browser Feedback"
+          <a href="mailto:osc-brand@uiowa.edu?subject=Icon Browser Feedback"
             >Submit Feedback</a
           >
           <a href="https://uiowa.edu/privacy">Privacy Notice</a>
@@ -33,7 +32,7 @@
       </div>
     </aside>
 
-    <main>
+    <main class="main-container">
       <div class="toolbar sticky">
         <SearchBar
           id="search"
@@ -97,6 +96,12 @@ a {
   padding: 0 10px;
   grid-template-columns: repeat(12, 1fr);
   max-width: 1550px;
+}
+
+.main-container {
+  @media only screen and (min-width: 760px) {
+    scroll-margin-top: 80px;
+  }
 }
 
 .toolbar {

@@ -61,7 +61,7 @@ const icons = computed(() => {
   });
 
   iconsFiltered = [...iconSet];
-
+  iconsFiltered.sort((a, b) => a.name.localeCompare(b.name));
   return iconsFiltered;
 });
 
