@@ -20,7 +20,7 @@
           >
         </li>
         <li class="menu-item">
-          <a href="https://brand.uiowa.edu">Brand manual</a>
+          <a href="https://brand.uiowa.edu">Brand Manual</a>
         </li>
       </ul>
     </nav>
