@@ -109,15 +109,19 @@
             :key="term.id"
             @click="closeModal()"
           >
-            <router-link
-              class="uids-tag"
-              :to="{
-                name: 'Search',
-                params: { term: term },
-              }"
+            <div
+              class="uids-tag-container"
               @click="gtag('event', 'tag_click', [{ term: term }])"
-              >#{{ term }}</router-link
             >
+              <router-link
+                class="uids-tag"
+                :to="{
+                  name: 'Search',
+                  params: { term: term },
+                }"
+                >#{{ term }}</router-link
+              >
+            </div>
           </span>
         </div>
       </div>
