@@ -5,21 +5,21 @@
     </h1>
     <nav
       role="navigation"
-      aria-labelledby="block-uids-base-toplinks-menu"
-      id="block-uids-base-toplinks"
-      class="menu--top nav block block-menu navigation menu--top-links"
+      aria-labelledby="toplinks-menu"
+      id="toplinks"
+      class="menu--top"
     >
-      <h2 class="visually-hidden" id="block-uids-base-toplinks-menu">
+      <h2 class="visually-hidden" id="toplinks-menu">
         Top links
       </h2>
 
       <ul class="menu">
-        <li class="menu-item">
+        <li>
           <a href="https://brand.uiowa.edu/graphic-elements#iconography"
             >Using Brand Icons</a
           >
         </li>
-        <li class="menu-item">
+        <li>
           <a href="https://brand.uiowa.edu">Brand Manual</a>
         </li>
       </ul>
