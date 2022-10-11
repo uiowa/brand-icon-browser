@@ -1,8 +1,24 @@
 <template>
-  <uids-brand-bar height="narrow">
+  <uids-brand-bar height="narrow" class="iowa-bar--full iowa-bar horizontal">
     <h1 class="site-name">
       <router-link :to="{ name: 'Home' }">Icon Browser</router-link>
     </h1>
+    <nav
+      role="navigation"
+      aria-labelledby="toplinks-menu"
+      id="toplinks"
+      class="menu--top"
+    >
+      <h2 class="visually-hidden" id="toplinks-menu">Top links</h2>
+
+      <ul class="menu">
+        <li>
+          <a href="https://brand.uiowa.edu/graphic-elements#iconography"
+            >Icon Usage</a
+          >
+        </li>
+      </ul>
+    </nav>
   </uids-brand-bar>
 
   <div class="wrapper" id="main-wrapper">
@@ -67,6 +83,8 @@
 @import "node_modules/uids/src/components/logo/logo.scss";
 @import "node_modules/uids/src/components/brand-bar/brand-bar.scss";
 @import "node_modules/uids/src/components/button/button.scss";
+@import "~/src/scss/components/top-menu.scss";
+
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
