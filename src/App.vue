@@ -9,18 +9,13 @@
       id="toplinks"
       class="menu--top"
     >
-      <h2 class="visually-hidden" id="toplinks-menu">
-        Top links
-      </h2>
+      <h2 class="visually-hidden" id="toplinks-menu">Top links</h2>
 
       <ul class="menu">
         <li>
           <a href="https://brand.uiowa.edu/graphic-elements#iconography"
-            >Using Brand Icons</a
+            >Icon Usage</a
           >
-        </li>
-        <li>
-          <a href="https://brand.uiowa.edu">Brand Manual</a>
         </li>
       </ul>
     </nav>
