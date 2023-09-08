@@ -6,7 +6,7 @@ https://icons.brand.uiowa.edu
 
 1. Follow [the steps on the Brand Icons repository](https://github.com/uiowa/brand-icons/blob/main/README.md) for adding the correct icon image file variants and adding keywords to icons in the `uiowa-brand-icons` package.
 2. Check out a new branch. Example: `icons_dep_update_aug_22`
-3. Update the commit hash for the `uiowa-brand-icons` package in `package.json`'s `devDependencies`. 
+3. Update the commit hash for the `uiowa-brand-icons` package in `package.json`'s `dependencies`. 
 
 Example: 
 
