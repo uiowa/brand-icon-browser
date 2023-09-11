@@ -1,12 +1,14 @@
 # Icon Browser
 https://icons.brand.uiowa.edu
 
+NOTE: this project uses a specific version of node.js. Ensure you run the `nvm use` command before doing any large amounts of developing.
+
 
 ## Adding new icons to Icon Browser
 
 1. Follow [the steps on the Brand Icons repository](https://github.com/uiowa/brand-icons/blob/main/README.md) for adding the correct icon image file variants and adding keywords to icons in the `uiowa-brand-icons` package.
 2. Check out a new branch. Example: `icons_dep_update_aug_22`
-3. Update the commit hash for the `uiowa-brand-icons` package in `package.json`'s `devDependencies`. 
+3. Update the commit hash for the `uiowa-brand-icons` package in `package.json`'s `dependencies`. 
 
 Example: 
 
@@ -18,6 +20,13 @@ Example:
 7. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
 
 ## Setting up development environment
+
+### Using the right version of node
+```
+nvm use
+```
+
+Follow any installation instructions given.
 
 ### Project setup
 ```
