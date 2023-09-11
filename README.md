@@ -1,6 +1,8 @@
 # Icon Browser
 https://icons.brand.uiowa.edu
 
+NOTE: this project uses a specific version of node.js. Ensure you run the `nvm use` command before doing any large amounts of developing.
+
 
 ## Adding new icons to Icon Browser
 
@@ -18,6 +20,13 @@ Example:
 7. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
 
 ## Setting up development environment
+
+### Using the right version of node
+```
+nvm use
+```
+
+Follow any installation instructions given.
 
 ### Project setup
 ```
