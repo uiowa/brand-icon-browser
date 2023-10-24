@@ -3,6 +3,35 @@ https://icons.brand.uiowa.edu
 
 NOTE: this project uses a specific version of node.js. Ensure you run the `nvm use` command before doing any large amounts of developing.
 
+## Setting up development environment
+
+### Using the right version of node
+```
+nvm use
+```
+
+Follow any installation instructions given.
+
+### Project setup
+```
+npm install
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies but skips generating the icon variants (for testing purposes)
+```
+npm run build-no-icons
+```
+
 
 ## Adding new icons to Icon Browser
 
@@ -18,36 +47,6 @@ Example:
 5. Test the icons you've added by running `npm run build` followed by `npm run serve` to ensure  the build succeeds and that the new icons are available on `localhost`.
 6. Create a PR to merge this branch into `main`
 7. Upon merging into `main`, icons.brand.uiowa.edu should update automatically via GitHub actions within ten minutes.
-
-## Setting up development environment
-
-### Using the right version of node
-```
-nvm use
-```
-
-Follow any installation instructions given.
-
-### Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Compiles and minifies but skips generating the icon variants (for testing purposes)
-```
-npm run build-no-icons
-```
-
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
