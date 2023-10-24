@@ -14,7 +14,7 @@
         "sharp": "^0.30.5",
         "uids": "git+https://github.com/uiowa/uids.git#d9f64e5",
         "uiowa-brand-icons":
-        "git+https://github.com/uiowa/brand-icons.git#c4c771f",
+        "git+https://github.com/uiowa/brand-icons.git#88169d9",
         "vue": "^3.2.13",
         "vue-router": "^4.0.3",
         "vue-toggle-component": "^1.0.16"
