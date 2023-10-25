@@ -124,7 +124,8 @@ a {
 
 .toolbar {
   padding: 10px 0;
-  background-color: #f5f5f5de;
+  background: #f5f5f5de;
+  background: linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(245,245,245,0.87) 10%, rgba(245,245,245,0.87) 90%, rgba(245,245,245,1) 100%);
   backdrop-filter: blur(5px);
 
   @media only screen and (min-width: 760px) {
