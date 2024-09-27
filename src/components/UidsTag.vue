@@ -16,4 +16,7 @@ export default {};
   text-decoration: none;
   display: inline-block;
 }
+.uids-tag-container {
+  display: inline-block;
+}
 </style>
